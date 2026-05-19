@@ -33,8 +33,16 @@ A brand element that exists in only one channel. Examples: scroll-reveal animati
 _Avoid_: Exclusive, native
 
 **AI consumer**:
-The agent that reads the design system and produces an artifact. The primary AI consumer for v1 is a Claude Code / coding agent reading files in this repo.
+The agent that reads the design system and produces an artifact. The primary AI consumer for v1 is a Claude Code / coding agent that has installed the `qortex-brand` skill (see below).
 _Avoid_: Client, user, generator
+
+**Skill**:
+A directory containing a `SKILL.md` file plus bundled resources, installable into an AI agent's skills directory via the `skills` CLI (`npx skills add ...`). When a user asks for something matching the skill's description, the agent reads `SKILL.md` and follows its instructions.
+_Avoid_: Plugin, command, tool
+
+**qortex-brand skill**:
+THE single skill this repo ships. Contains the entire brand book, design system, template library, and render tooling. Triggers on any Qortex marketing artifact request (landing page, deck, email, social card, voice review). Internally routes to the right channel docs and template.
+_Avoid_: Qortex CLI, design-system CLI, marketing kit
 
 **Specimen**:
 A real sentence (or component, or layout) from existing on-brand Qortex output, captured verbatim so an AI agent can pattern-match against it. The brand book uses specimens, not adjective lists, to encode voice.

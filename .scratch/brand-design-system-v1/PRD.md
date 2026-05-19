@@ -22,7 +22,7 @@ All four channel formats compile to or render from HTML + CSS, so one CSS-variab
 
 Both EN and JP renderings are supported from v1, with per-language type stack, line-height, and letter-spacing switches matching what qortex.com already does.
 
-An AI consumer (initially Claude Code) reading this repo can produce an on-brand artifact for any of the four channels by following the discovery path in `brand/README.md` → relevant `brand/book/*.md` for voice → relevant `brand/system/channels/<channel>.md` for layout rules → a template from `brand/templates/<channel>/` to customise.
+An AI consumer (initially Claude Code) reading this repo can produce an on-brand artifact for any of the four channels by following the discovery path in `skills/qortex-brand/SKILL.md` → relevant `skills/qortex-brand/book/*.md` for voice → relevant `skills/qortex-brand/system/channels/<channel>.md` for layout rules → a template from `skills/qortex-brand/templates/<channel>/` to customise.
 
 ## User Stories
 
@@ -37,97 +37,97 @@ An AI consumer (initially Claude Code) reading this repo can produce an on-brand
 7. As a Japanese-market marketer, I want every template to render JP copy with correct line-height (1.8 vs 1.65), no aggressive letter-spacing, `word-break: keep-all`, and Noto Sans JP, so JP-language collateral doesn't look like an afterthought.
 8. As a producer working on a customer case study, I want a long-form web template (case-study.html) with a narrative spine (context → challenge → solution → results → quote), so case studies have a consistent structure instead of being one-off pages.
 9. As a producer who occasionally needs a feature/solution landing page, I want a separate landing template (feature-landing.html) that follows a persuasive structure (hero → problem → solution → proof → CTA), so persuasive pages don't get jammed into a case-study layout.
-10. As a marketer who doesn't know which template to pick, I want a `README.md` in each `brand/templates/<channel>/` directory that explains when to pick A vs B, so I make the right call without asking design.
+10. As a marketer who doesn't know which template to pick, I want a `README.md` in each `skills/qortex-brand/templates/<channel>/` directory that explains when to pick A vs B, so I make the right call without asking design.
 
 ### AI consumers (Claude Code and future LLM agents)
 
-11. As an AI coding agent asked "make a launch email for our new pricing change", I want to find a single root `brand/README.md` that lists the reading order, so I know where to start.
-12. As an AI agent generating an email, I want the MJML launch template, brand voice specimens, email channel rules, and design tokens all reachable from `brand/README.md`, so I don't have to guess which docs are relevant.
+11. As an AI coding agent asked "make a launch email for our new pricing change", I want to find a single root `skills/qortex-brand/SKILL.md` that lists the reading order, so I know where to start.
+12. As an AI agent generating an email, I want the MJML launch template, brand voice specimens, email channel rules, and design tokens all reachable from `skills/qortex-brand/SKILL.md`, so I don't have to guess which docs are relevant.
 13. As an AI agent generating copy, I want the brand voice encoded as specimens + anti-specimens (real Qortex sentences paired with anti-examples), so I can pattern-match rather than infer from vague adjectives.
-14. As an AI agent generating any artifact, I want a single `brand/system/tokens.css` (CSS variables) and a machine-readable `tokens.json` mirror, so I have one source of truth for colour, type, spacing, radii, and shadows.
+14. As an AI agent generating any artifact, I want a single `skills/qortex-brand/system/tokens.css` (CSS variables) and a machine-readable `tokens.json` mirror, so I have one source of truth for colour, type, spacing, radii, and shadows.
 15. As an AI agent generating slides, I want a Slidev theme that imports `tokens.css` directly, so slide colours and fonts match the website exactly without me copying values.
 16. As an AI agent generating emails, I want an MJML build config that compiles to inline-styled HTML, so I don't have to hand-write inline CSS for cross-client compatibility.
 17. As an AI agent generating social posts, I want a tiny render script that takes (HTML template path, aspect ratio, output path) and produces a PNG via Puppeteer/Playwright, so I can produce final social assets without manual screenshotting.
-18. As an AI agent reviewing my own draft, I want a `brand/book/do-and-dont.md` with rapid-fire rules, so I can self-check before returning output.
-19. As an AI agent generating bilingual copy, I want `brand/system/channels/<channel>.md` to spell out per-language overrides (font stack, line-height, letter-spacing, word-break), so JP and EN both look correct.
-20. As an AI agent picking an icon, I want a documented Lucide icon mapping for common Qortex concepts (commerce, AI, LINE, payments, fulfilment, customers, analytics) in `brand/book/visual-identity.md`, so I pick a consistent icon for the same concept across artifacts.
+18. As an AI agent reviewing my own draft, I want a `skills/qortex-brand/book/do-and-dont.md` with rapid-fire rules, so I can self-check before returning output.
+19. As an AI agent generating bilingual copy, I want `skills/qortex-brand/system/channels/<channel>.md` to spell out per-language overrides (font stack, line-height, letter-spacing, word-break), so JP and EN both look correct.
+20. As an AI agent picking an icon, I want a documented Lucide icon mapping for common Qortex concepts (commerce, AI, LINE, payments, fulfilment, customers, analytics) in `skills/qortex-brand/book/visual-identity.md`, so I pick a consistent icon for the same concept across artifacts.
 
 ### Brand custodians (the team that maintains this)
 
-21. As a brand custodian, I want every locked core element (wordmark, navy + cyan, Sora/Figtree, voice) documented as such in `brand/book/visual-identity.md`, so future contributors know what they can and can't change.
+21. As a brand custodian, I want every locked core element (wordmark, navy + cyan, Sora/Figtree, voice) documented as such in `skills/qortex-brand/book/visual-identity.md`, so future contributors know what they can and can't change.
 22. As a brand custodian, I want ADR-0001 to record the channel-format decision (HTML/CSS, Slidev, MJML, Puppeteer) and its consequence (no native .pptx/Keynote export), so a future engineer wondering "why don't we use python-pptx?" reads the answer.
 23. As a brand custodian, I want a `tokens.css` ↔ `tokens.json` sync test, so I catch drift the moment one file is edited without the other.
 24. As a brand custodian, I want build smoke tests that each Slidev deck, each MJML email, and each social template render without error, so a refactor to tokens or shared partials surfaces breakage fast.
 25. As a brand custodian, I want visual snapshot tests for the social and email renders, so a token tweak that subtly breaks a layout (e.g. text overflow at 1080×1080) surfaces in CI rather than in a posted social card.
 26. As a brand custodian, I want the chart palette (blue, cyan, green, amber, +one violet) defined alongside the brand palette but clearly labelled as "data viz only", so it doesn't bleed into general brand surfaces.
-27. As a brand custodian, I want imagery rules ("type-first + abstract + customer logos + curated stock; no AI-generated photos") in `brand/book/visual-identity.md`, so anyone adding stock photos to a deck has a written rule to follow.
+27. As a brand custodian, I want imagery rules ("type-first + abstract + customer logos + curated stock; no AI-generated photos") in `skills/qortex-brand/book/visual-identity.md`, so anyone adding stock photos to a deck has a written rule to follow.
 28. As a brand custodian, I want the four channel-adapted hero treatments (web animated, slides static PNG, email flat band, social static composition) documented as variants of one motif, so the brand reads as one system rather than four parallel systems.
 
 ### Future evolution (deferred but visible)
 
-29. As a future v2 owner, I want a deferred-decisions list visible in `brand/README.md` (custom motif library, photography commission, illustration system), so v2 conversations start from known open questions rather than re-discovering them.
+29. As a future v2 owner, I want a deferred-decisions list visible in `skills/qortex-brand/SKILL.md` (custom motif library, photography commission, illustration system), so v2 conversations start from known open questions rather than re-discovering them.
 
 ## Implementation Decisions
 
 ### Module 1: Tokens (deepest module)
 
-- One source of truth: `brand/system/tokens.css` containing CSS custom properties in a `:root` block, matching the existing qortex.com vocabulary (`--navy`, `--cyan`, `--cyan-bright`, `--bg`, `--text`, etc.)
-- A machine-readable mirror: `brand/system/tokens.json`. A small sync test asserts they agree
+- One source of truth: `skills/qortex-brand/system/tokens.css` containing CSS custom properties in a `:root` block, matching the existing qortex.com vocabulary (`--navy`, `--cyan`, `--cyan-bright`, `--bg`, `--text`, etc.)
+- A machine-readable mirror: `skills/qortex-brand/system/tokens.json`. A small sync test asserts they agree
 - Token categories: colour (brand, neutral, status), type (font family stacks for EN and JP, weight scale, size scale, line-height scale, letter-spacing scale), spacing scale, radii, shadow scale
 - Chart palette is a separate token group under `--chart-1` … `--chart-5`, clearly namespaced so it can't accidentally be used as a general brand colour
 
 ### Module 2: Brand book (markdown)
 
-- `brand/book/mission.md` — one page; what Qortex is, who it's for, what it stands against
-- `brand/book/voice.md` — specimens + anti-specimens for the common moves (headline, subhead, paragraph, CTA, eyebrow, microcopy). Each entry has a real Qortex sentence and an anti-example
-- `brand/book/visual-identity.md` — the locked core (wordmark, palette, type, hero motif, iconography mapping). Explicitly distinguishes "core" from "channel-adapted"
-- `brand/book/do-and-dont.md` — rapid-fire rules an AI consults before returning output
+- `skills/qortex-brand/book/mission.md` — one page; what Qortex is, who it's for, what it stands against
+- `skills/qortex-brand/book/voice.md` — specimens + anti-specimens for the common moves (headline, subhead, paragraph, CTA, eyebrow, microcopy). Each entry has a real Qortex sentence and an anti-example
+- `skills/qortex-brand/book/visual-identity.md` — the locked core (wordmark, palette, type, hero motif, iconography mapping). Explicitly distinguishes "core" from "channel-adapted"
+- `skills/qortex-brand/book/do-and-dont.md` — rapid-fire rules an AI consults before returning output
 
 ### Module 3: Design system docs (markdown)
 
-- `brand/system/type-scale.md` — display vs body sizes, weights, line-heights for EN and JP separately
-- `brand/system/spacing.md` — spacing scale, container widths, section padding, grid rules
-- `brand/system/components/*.md` — one file per component (button, card, eyebrow, hero-band, pill, eco-card, dashboard-mock, …). Each file: purpose, anatomy, code snippet, do/don't
-- `brand/system/channels/*.md` — one file per channel (web, slides, email, social). Each file: channel constraints, what survives translation, what doesn't, per-language overrides
+- `skills/qortex-brand/system/type-scale.md` — display vs body sizes, weights, line-heights for EN and JP separately
+- `skills/qortex-brand/system/spacing.md` — spacing scale, container widths, section padding, grid rules
+- `skills/qortex-brand/system/components/*.md` — one file per component (button, card, eyebrow, hero-band, pill, eco-card, dashboard-mock, …). Each file: purpose, anatomy, code snippet, do/don't
+- `skills/qortex-brand/system/channels/*.md` — one file per channel (web, slides, email, social). Each file: channel constraints, what survives translation, what doesn't, per-language overrides
 
 ### Module 4: Web templates
 
-- `brand/templates/web/feature-landing.html` — framework-agnostic HTML using token CSS variables, persuasive structure (hero → problem → solution → proof → CTA)
-- `brand/templates/web/case-study.html` — narrative structure (context → challenge → solution → results → quote)
-- `brand/templates/web/README.md` — picker guide
+- `skills/qortex-brand/templates/web/feature-landing.html` — framework-agnostic HTML using token CSS variables, persuasive structure (hero → problem → solution → proof → CTA)
+- `skills/qortex-brand/templates/web/case-study.html` — narrative structure (context → challenge → solution → results → quote)
+- `skills/qortex-brand/templates/web/README.md` — picker guide
 
 ### Module 5: Slides templates
 
 - Slidev project with a custom theme that imports `tokens.css`
-- `brand/templates/slides/sales-pitch.md` — ~20 slides, customer-facing
-- `brand/templates/slides/executive-briefing.md` — 5–8 slides, C-suite, dense
-- `brand/templates/slides/README.md` — picker guide
+- `skills/qortex-brand/templates/slides/sales-pitch.md` — ~20 slides, customer-facing
+- `skills/qortex-brand/templates/slides/executive-briefing.md` — 5–8 slides, C-suite, dense
+- `skills/qortex-brand/templates/slides/README.md` — picker guide
 
 ### Module 6: Email templates
 
 - MJML project with shared partials (header band, footer, CTA button) that reference tokens
-- `brand/templates/email/launch.mjml` — single subject, one news item, big CTA
-- `brand/templates/email/newsletter.mjml` — multi-section, 3–5 items, multi-CTA
-- `brand/templates/email/README.md` — picker guide
+- `skills/qortex-brand/templates/email/launch.mjml` — single subject, one news item, big CTA
+- `skills/qortex-brand/templates/email/newsletter.mjml` — multi-section, 3–5 items, multi-CTA
+- `skills/qortex-brand/templates/email/README.md` — picker guide
 - Build target: inline-styled HTML compatible with HubSpot's paste-in flow
 
 ### Module 7: Social render (second-deepest)
 
-- `brand/templates/social/<template>-<aspect>.html` files (quote-card-1x1, quote-card-16x9, quote-card-9x16, logo-card-1x1, logo-card-16x9)
+- `skills/qortex-brand/templates/social/<template>-<aspect>.html` files (quote-card-1x1, quote-card-16x9, quote-card-9x16, logo-card-1x1, logo-card-16x9)
 - A tiny Puppeteer or Playwright runner script: takes `(html, viewport-w, viewport-h, output-path)` and produces a PNG
 - The runner is the *only* place that knows about a headless browser. Templates are pure HTML/CSS
 
 ### Module 8: Index / discovery
 
-- `brand/README.md` — single entry point: what's here, in what order to read, how to use each piece
-- Update `CLAUDE.md` to add a "Brand design system" section pointing at `brand/README.md`
+- `skills/qortex-brand/SKILL.md` — single entry point: what's here, in what order to read, how to use each piece
+- Update `CLAUDE.md` to add a "Brand design system" section pointing at `skills/qortex-brand/SKILL.md`
 - Update `CONTEXT.md` if any further terms surface during implementation
 
 ### Cross-cutting decisions
 
 - **Bilingual**: every template supports an `html[lang="ja"]` rendering path mirroring the rules from qortex.com (Noto Sans JP fallback, `line-height: 1.8`, no negative letter-spacing on display, `word-break: keep-all`, `overflow-wrap: anywhere`)
 - **No package-manager lock-in in tokens.css**: it's plain CSS, importable from any toolchain
-- **Slidev, MJML, Puppeteer dependencies live in per-channel sub-projects** (e.g. `brand/templates/slides/package.json`) so adding a channel doesn't pollute the root, and a channel can be re-tooled in isolation
+- **Slidev, MJML, Puppeteer dependencies live in per-channel sub-projects** (e.g. `skills/qortex-brand/templates/slides/package.json`) so adding a channel doesn't pollute the root, and a channel can be re-tooled in isolation
 - **Voice encoding format**: specimens + anti-specimens stored in `voice.md` as structured markdown sections (one section per move). Each section has a `### Specimens` list and a `### Anti-specimens` list. The specimens are real Qortex sentences pulled from qortex.com; anti-specimens are written for this PRD
 
 ## Testing Decisions
@@ -141,7 +141,7 @@ Tests in scope:
   - Slidev: `slidev build` exits 0 for both deck templates
   - MJML: `mjml --validate` and full compile exits 0 for both email templates
   - Social: the Puppeteer runner produces a non-zero-byte PNG for each social template at each aspect ratio
-- **Visual snapshot tests**: baseline PNGs for each social template (5 files × 1080×1080, 1200×630, 1080×1920 as applicable) and each compiled email (rendered to PNG via Puppeteer at 600px-wide mobile and 700px-wide desktop). Diff tool: `pixelmatch` with a small tolerance. Baselines committed to `brand/templates/<channel>/__snapshots__/`.
+- **Visual snapshot tests**: baseline PNGs for each social template (5 files × 1080×1080, 1200×630, 1080×1920 as applicable) and each compiled email (rendered to PNG via Puppeteer at 600px-wide mobile and 700px-wide desktop). Diff tool: `pixelmatch` with a small tolerance. Baselines committed to `skills/qortex-brand/templates/<channel>/__snapshots__/`.
 
 No prior art exists in this repo — it's greenfield. The snapshot pattern is well-trodden (Storybook, Chromatic, jest-image-snapshot); we'll use `pixelmatch` directly to avoid pulling in a heavy framework for what is ultimately a tiny CI gate.
 
