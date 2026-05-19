@@ -115,6 +115,10 @@ const cases = [
   emailCase("launch", 700, "en"),
   emailCase("launch", 600, "ja"),
   emailCase("launch", 700, "ja"),
+  emailCase("newsletter", 600, "en"),
+  emailCase("newsletter", 700, "en"),
+  emailCase("newsletter", 600, "ja"),
+  emailCase("newsletter", 700, "ja"),
 ];
 
 function loadPng(path) {

@@ -1,0 +1,138 @@
+<mjml>
+  <mj-head>
+    <mj-title>QORTEX — Monthly roundup</mj-title>
+    <mj-preview>This month: the AI layer, delivery model, customer stories, and what's next.</mj-preview>
+    <mj-font name="Sora" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;display=swap" />
+    <mj-font name="Figtree" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&amp;display=swap" />
+    <mj-attributes>
+      <mj-all font-family="Figtree, Arial, sans-serif" />
+      <mj-text color="{{navy}}" font-size="16px" line-height="1.6" />
+      <mj-section padding="0" />
+    </mj-attributes>
+    <mj-style>
+      body { margin: 0; padding: 0; background: #F4F6FA; }
+      a { color: {{cyan}}; }
+      em { font-style: italic; }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        color: {{cyan}};
+        font-weight: 600;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#F4F6FA" width="600px">
+
+    <!-- @include partials/header.mjml -->
+
+    <!-- Issue eyebrow band -->
+    <mj-section background-color="#FFFFFF" padding="32px 32px 0 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">Issue 12 · May 2026</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Lead story -->
+    <mj-section background-color="#FFFFFF" padding="12px 32px 8px 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">Lead story</mj-text>
+        <mj-text
+          padding-top="10px"
+          font-family="Sora, Arial, sans-serif"
+          font-weight="800"
+          font-size="28px"
+          line-height="1.15"
+          letter-spacing="-0.5px"
+          color="{{navy}}"
+        >
+          Japan-first. <em>Intelligent commerce.</em>
+        </mj-text>
+        <mj-text padding-top="12px">
+          We launched QORTEX this month — an AI-first composable commerce suite for global brands operating in Japan. Built on the MACH architecture, with Japan-native integrations from day one.
+        </mj-text>
+        <mj-text padding-top="12px">
+          <a href="{{lead-href}}" style="color:{{cyan}};font-weight:600;">Read the launch announcement →</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/section-divider.mjml -->
+
+    <!-- Secondary story 1 -->
+    <mj-section background-color="#FFFFFF" padding="24px 32px 8px 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">The AI layer</mj-text>
+        <mj-text
+          padding-top="10px"
+          font-family="Sora, Arial, sans-serif"
+          font-weight="700"
+          font-size="20px"
+          line-height="1.2"
+          color="{{navy}}"
+        >
+          AI embedded where your team already works.
+        </mj-text>
+        <mj-text padding-top="10px">
+          The AI layer ships pre-integrated into the dashboard your merchandising and customer-care teams already use. No new tab, no new login.
+        </mj-text>
+        <mj-text padding-top="10px">
+          <a href="{{secondary1-href}}" style="color:{{cyan}};font-weight:600;">Learn more →</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/section-divider.mjml -->
+
+    <!-- Secondary story 2 -->
+    <mj-section background-color="#FFFFFF" padding="24px 32px 8px 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">Delivery</mj-text>
+        <mj-text
+          padding-top="10px"
+          font-family="Sora, Arial, sans-serif"
+          font-weight="700"
+          font-size="20px"
+          line-height="1.2"
+          color="{{navy}}"
+        >
+          Designed together. <em>Shipped fast.</em>
+        </mj-text>
+        <mj-text padding-top="10px">
+          80% pre-built core, 20% configured to your operations. The delivery model is how we ship in months, not quarters.
+        </mj-text>
+        <mj-text padding-top="10px">
+          <a href="{{secondary2-href}}" style="color:{{cyan}};font-weight:600;">See how we deliver →</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/section-divider.mjml -->
+
+    <!-- Secondary story 3 -->
+    <mj-section background-color="#FFFFFF" padding="24px 32px 32px 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">Who we work with</mj-text>
+        <mj-text
+          padding-top="10px"
+          font-family="Sora, Arial, sans-serif"
+          font-weight="700"
+          font-size="20px"
+          line-height="1.2"
+          color="{{navy}}"
+        >
+          For Japan's leading global teams.
+        </mj-text>
+        <mj-text padding-top="10px">
+          Three new customers joined the platform this month. Read what they're shipping.
+        </mj-text>
+        <mj-text padding-top="10px">
+          <a href="{{secondary3-href}}" style="color:{{cyan}};font-weight:600;">Customer stories →</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/footer.mjml -->
+
+  </mj-body>
+</mjml>

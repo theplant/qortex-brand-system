@@ -36,15 +36,20 @@ function loadContent(mjmlFilePath) {
   return JSON.parse(readFileSync(contentPath, "utf8"));
 }
 
-function inlineIncludes(src, baseDir, seen = new Set()) {
+function inlineIncludes(src, baseDir, ancestors = []) {
+  // `ancestors` is the chain of include paths from root to current. A
+  // genuine cycle is detected when a partial includes one of its ancestors;
+  // including the same partial multiple times as siblings (e.g. a divider
+  // between newsletter sections) is fine and must not error.
   return src.replace(/<!--\s*@include\s+([^\s]+)\s*-->/g, (_, rel) => {
     const abs = resolve(baseDir, rel);
-    if (seen.has(abs)) {
-      throw new Error(`circular include: ${abs}`);
+    if (ancestors.includes(abs)) {
+      throw new Error(
+        `circular include: ${abs} → ${[...ancestors, abs].join(" → ")}`
+      );
     }
-    seen.add(abs);
     const body = readFileSync(abs, "utf8");
-    return inlineIncludes(body, dirname(abs), seen);
+    return inlineIncludes(body, dirname(abs), [...ancestors, abs]);
   });
 }
 

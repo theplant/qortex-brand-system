@@ -1,0 +1,133 @@
+<mjml>
+  <mj-head>
+    <mj-title>QORTEX — 月次ラウンドアップ</mj-title>
+    <mj-preview>今月のトピック: AI レイヤー、デリバリーモデル、お客様事例、そして次の一手。</mj-preview>
+    <mj-font name="Sora" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;display=swap" />
+    <mj-font name="Noto Sans JP" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" />
+    <mj-attributes>
+      <mj-all font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Yu Gothic', sans-serif" />
+      <mj-text color="{{navy}}" font-size="16px" line-height="1.8" />
+      <mj-section padding="0" />
+    </mj-attributes>
+    <mj-style>
+      body { margin: 0; padding: 0; background: #F4F6FA; }
+      a { color: {{cyan}}; }
+      em { font-style: normal; color: {{cyan}}; }
+      .eyebrow {
+        text-transform: none;
+        letter-spacing: 1px;
+        font-size: 12px;
+        color: {{cyan}};
+        font-weight: 600;
+      }
+      .jp-body { word-break: keep-all; overflow-wrap: anywhere; }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#F4F6FA" width="600px">
+
+    <!-- @include partials/header.mjml -->
+
+    <mj-section background-color="#FFFFFF" padding="32px 32px 0 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">第12号 · 2026年5月</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF" padding="12px 32px 8px 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">本号のトップ</mj-text>
+        <mj-text
+          padding-top="10px"
+          font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Yu Gothic', sans-serif"
+          font-weight="700"
+          font-size="24px"
+          line-height="1.6"
+          color="{{navy}}"
+        >
+          日本ファースト。<em>インテリジェントコマース。</em>
+        </mj-text>
+        <mj-text css-class="jp-body" padding-top="12px">
+          今月、QORTEX を立ち上げました。日本で事業を展開するグローバルブランドのために設計された、AI ファーストでコンポーザブルなコマース。MACH アーキテクチャを基盤に、日本ネイティブのインテグレーションを標準装備。
+        </mj-text>
+        <mj-text padding-top="12px">
+          <a href="{{lead-href}}" style="color:{{cyan}};font-weight:600;">立ち上げの詳細を読む →</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/section-divider.mjml -->
+
+    <mj-section background-color="#FFFFFF" padding="24px 32px 8px 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">AI レイヤー</mj-text>
+        <mj-text
+          padding-top="10px"
+          font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Yu Gothic', sans-serif"
+          font-weight="700"
+          font-size="18px"
+          line-height="1.6"
+          color="{{navy}}"
+        >
+          チームが普段働く場所に、AI を組み込む。
+        </mj-text>
+        <mj-text css-class="jp-body" padding-top="10px">
+          AI レイヤーは、マーチャンダイジングやカスタマーケアのチームが既に使っているダッシュボードに統合されます。新しいタブも、新しいログインも不要。
+        </mj-text>
+        <mj-text padding-top="10px">
+          <a href="{{secondary1-href}}" style="color:{{cyan}};font-weight:600;">詳しく見る →</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/section-divider.mjml -->
+
+    <mj-section background-color="#FFFFFF" padding="24px 32px 8px 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">デリバリー</mj-text>
+        <mj-text
+          padding-top="10px"
+          font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Yu Gothic', sans-serif"
+          font-weight="700"
+          font-size="18px"
+          line-height="1.6"
+          color="{{navy}}"
+        >
+          共に設計。<em>素早く公開。</em>
+        </mj-text>
+        <mj-text css-class="jp-body" padding-top="10px">
+          80% は構築済みのコア。20% は御社の業務に合わせてカスタマイズ。四半期単位ではなく、数か月で稼働開始するためのデリバリーモデル。
+        </mj-text>
+        <mj-text padding-top="10px">
+          <a href="{{secondary2-href}}" style="color:{{cyan}};font-weight:600;">提供方法を見る →</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/section-divider.mjml -->
+
+    <mj-section background-color="#FFFFFF" padding="24px 32px 32px 32px">
+      <mj-column>
+        <mj-text css-class="eyebrow">ご一緒する企業</mj-text>
+        <mj-text
+          padding-top="10px"
+          font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Yu Gothic', sans-serif"
+          font-weight="700"
+          font-size="18px"
+          line-height="1.6"
+          color="{{navy}}"
+        >
+          日本のリーディンググローバルチームのために。
+        </mj-text>
+        <mj-text css-class="jp-body" padding-top="10px">
+          今月、3 社の新規導入が決定しました。各社が実装している内容をご紹介します。
+        </mj-text>
+        <mj-text padding-top="10px">
+          <a href="{{secondary3-href}}" style="color:{{cyan}};font-weight:600;">お客様事例 →</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/footer.mjml -->
+
+  </mj-body>
+</mjml>
