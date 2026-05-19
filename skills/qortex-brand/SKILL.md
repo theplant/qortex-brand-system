@@ -26,19 +26,19 @@ Producing an artifact:
 5. **Pick a template** from `templates/<channel>/`. Each channel's `README.md` (added by follow-on issues) explains when to pick which.
 6. **Render.** For social, use `tools/render.mjs` to produce a PNG.
 
-## v1 state (tracer slice)
+## v1 state
 
-This release is a **tracer-bullet vertical slice**. It seeds:
+This release is being assembled as **thin vertical slices**. Current state:
 
 - Tokens (colours + shadows + type stack) — full set.
 - `book/visual-identity.md` — locked core only; channel-adapted heroes/iconography seeded as placeholders, filled in by later issues.
 - `book/voice.md` — `Headlines` section only.
 - `system/channels/social.md` — social channel rules and EN/JP overrides.
-- `templates/social/quote-card-1x1.html` — one template.
-- `tools/render.mjs` — Puppeteer renderer. The **only** place that knows about a headless browser.
-- Tests: token sync, render smoke, visual snapshot (EN + JP).
+- `templates/social/` — five starter templates (quote-card at 1:1 / 16:9 / 9:16; logo-card at 1:1 / 16:9) and a picker `README.md`. Each renders in EN and JP.
+- `tools/render.mjs` — Puppeteer renderer with content slots (`--quote`, `--name`, `--role`, `--eyebrow`, `--logo`). The **only** place that knows about a headless browser. Enforces template-declared slot requirements via `<meta name="qortex:requires-logo">`.
+- Tests: token sync + visual snapshot (10 cases — 5 templates × 2 languages).
 
-Subsequent issues (see `.scratch/brand-design-system-v1/issues/`) add the rest of social, then slides, email, and web — each as a thin slice through the same stack.
+Subsequent issues (see `.scratch/brand-design-system-v1/issues/`) add slides, email, and web — each as a thin slice through the same stack.
 
 ## Running checks
 

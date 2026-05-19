@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <title>Sample customer logo (fixture only)</title>
+  <rect x="0" y="0" width="400" height="120" rx="16" fill="#FFFFFF"/>
+  <g fill="#0B1F4A" font-family="Sora, system-ui, sans-serif" font-weight="800">
+    <text x="40" y="78" font-size="56" letter-spacing="-2">acme</text>
+    <rect x="226" y="46" width="14" height="36" fill="#00AEFF"/>
+    <text x="252" y="78" font-size="56" letter-spacing="-2">co</text>
+  </g>
+</svg>

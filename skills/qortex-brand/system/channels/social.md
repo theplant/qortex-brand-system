@@ -22,7 +22,7 @@ A social card is a single PNG, rendered from an HTML template via `../../tools/r
 | `16x9`    | 1200×630   | LinkedIn link preview, X link preview, OG image.     |
 | `9x16`    | 1080×1920  | Instagram / LinkedIn story, vertical mobile.         |
 
-v1 ships `1x1` only. `16x9` and `9x16` are added by follow-on issues.
+All three aspect ratios are shipped for quote-cards. Logo-cards ship in `1x1` and `16x9` only — a `9x16` customer-announcement reads better as a quote card naming the customer in the headline. See `../../templates/social/README.md` for the full picker guide.
 
 ## What survives translation (locked core)
 

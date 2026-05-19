@@ -35,26 +35,65 @@ const update = process.argv.includes("--update");
 const PIXEL_DIFF_TOLERANCE = 0.005;
 const PIXELMATCH_THRESHOLD = 0.1;
 
+const SAMPLE_LOGO = resolve(SKILL_ROOT, "templates/social/__fixtures__/sample-customer-logo.svg");
+
+// Each (template × language) gets one snapshot case. Quote-cards share content
+// slots — the same `quote` HTML and attribution fills any of the three aspect
+// ratios. Logo-cards take a customer logo + framing copy.
+const QUOTE_EN = {
+  lang: "en",
+  // Default content is baked into each template; explicit content here proves
+  // the shared-slot contract (same input fills any of the three).
+  quote: "Japan-first. <em>Intelligent commerce.</em>",
+  attributionName: "Qortex",
+  role: "qortex.com",
+};
+const QUOTE_JA = {
+  lang: "ja",
+  quote: "日本発の。<em>知能ある商取引。</em>",
+  attributionName: "Qortex",
+  role: "qortex.com",
+};
+const LOGO_EN = {
+  lang: "en",
+  eyebrow: "Now serving",
+  attributionName: "Acme Co",
+  logo: SAMPLE_LOGO,
+};
+const LOGO_JA = {
+  lang: "ja",
+  eyebrow: "新規導入",
+  attributionName: "アクメ株式会社",
+  logo: SAMPLE_LOGO,
+};
+
+function quoteCase(template, w, h, langSuffix, content) {
+  return {
+    id: `${template}.${langSuffix}`,
+    template: resolve(SKILL_ROOT, `templates/social/${template}.html`),
+    baseline: resolve(
+      SKILL_ROOT,
+      `templates/social/__snapshots__/${template}-${langSuffix}.png`
+    ),
+    width: w,
+    height: h,
+    ...content,
+  };
+}
+
 const cases = [
-  {
-    id: "quote-card-1x1.en",
-    template: resolve(SKILL_ROOT, "templates/social/quote-card-1x1.html"),
-    baseline: resolve(SKILL_ROOT, "templates/social/__snapshots__/quote-card-1x1-en.png"),
-    width: 1080,
-    height: 1080,
-    lang: "en",
-  },
-  {
-    id: "quote-card-1x1.ja",
-    template: resolve(SKILL_ROOT, "templates/social/quote-card-1x1.html"),
-    baseline: resolve(SKILL_ROOT, "templates/social/__snapshots__/quote-card-1x1-ja.png"),
-    width: 1080,
-    height: 1080,
-    lang: "ja",
-    quote: "日本発の。<em>知能ある商取引。</em>",
-    attributionName: "Qortex",
-    role: "qortex.com",
-  },
+  // Quote cards — same content slots, three aspect ratios, EN + JP each.
+  quoteCase("quote-card-1x1", 1080, 1080, "en", QUOTE_EN),
+  quoteCase("quote-card-1x1", 1080, 1080, "ja", QUOTE_JA),
+  quoteCase("quote-card-16x9", 1200, 630, "en", QUOTE_EN),
+  quoteCase("quote-card-16x9", 1200, 630, "ja", QUOTE_JA),
+  quoteCase("quote-card-9x16", 1080, 1920, "en", QUOTE_EN),
+  quoteCase("quote-card-9x16", 1080, 1920, "ja", QUOTE_JA),
+  // Logo cards — customer logo + eyebrow + name, two aspect ratios.
+  quoteCase("logo-card-1x1", 1080, 1080, "en", LOGO_EN),
+  quoteCase("logo-card-1x1", 1080, 1080, "ja", LOGO_JA),
+  quoteCase("logo-card-16x9", 1200, 630, "en", LOGO_EN),
+  quoteCase("logo-card-16x9", 1200, 630, "ja", LOGO_JA),
 ];
 
 function loadPng(path) {
@@ -72,6 +111,8 @@ async function runCase(c) {
     quote: c.quote,
     name: c.attributionName,
     role: c.role,
+    eyebrow: c.eyebrow,
+    logo: c.logo,
   });
 
   const size = statSync(tmpOut).size;
