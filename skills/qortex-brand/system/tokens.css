@@ -1,5 +1,5 @@
 /*
- * Qortex design tokens — single source of truth.
+ * QORTEX design tokens — single source of truth.
  *
  * Mirrored in tokens.json. Any edit here must also be made in tokens.json or
  * the token-sync test will fail. See skills/qortex-brand/tools/test-token-sync.mjs.

@@ -1,4 +1,4 @@
-# Qortex visual identity — locked core vs channel-adapted
+# QORTEX visual identity — locked core vs channel-adapted
 
 This file is the seed. Subsequent issues extend it with full iconography, hero motifs, and imagery rules.
 
@@ -6,16 +6,27 @@ This file is the seed. Subsequent issues extend it with full iconography, hero m
 
 The visual identity has two layers:
 
-- **Locked core** — survives every channel unchanged. If you change these, you change Qortex.
+- **Locked core** — survives every channel unchanged. If you change these, you change QORTEX.
 - **Channel-adapted** — exists in every channel but renders differently because of channel constraints. Documented per-channel under `../system/channels/`.
 
 If you're an AI agent, treat the locked core as inviolable. Treat channel-adapted as a contract: same idea, different render. Never invent a third category.
 
 ## Locked core
 
-### Wordmark
+### Brand name and wordmark
 
-The lowercase `qortex` wordmark, set in the display family (`--font-display`, Sora). Never uppercased, never italicised, never wrapped in a logotype. The wordmark is type, not a logo file.
+The company is **QORTEX** — all uppercase — in every written reference (headlines, body copy, attribution, footer, voice specimens, documentation prose). Not "Qortex", not "qortex". The only exception is the lowercase domain `qortex.com`, which is a URL convention, not a brand reference.
+
+Two visual treatments of the wordmark, picked by surface:
+
+| Surface          | Treatment                                                | Asset                                                            |
+|------------------|----------------------------------------------------------|------------------------------------------------------------------|
+| Light background | The full official logo — geometric mark + QORTEX wordmark in navy. Never alter the colours of this asset. | `../system/assets/qortex-logo-light.png` (780×256 PNG)            |
+| Dark background  | QORTEX wordmark only, set in Sora 800 with tight negative tracking, fill via `currentColor` so a consuming context picks white. | `../system/assets/qortex-wordmark.svg` (inline or `<img>`)        |
+
+The geometric mark portion of the official logo only ships as part of the light PNG at v1. A vector source for the standalone mark is deferred to v2; until then, dark-surface treatments use the wordmark-only SVG. Documented in the picker tables above.
+
+Never set the wordmark in lowercase letters as type ("qortex"), never italicise, never expand letter-spacing, never recolour the official PNG. The SVG wordmark may be recoloured via `currentColor` (white on dark; navy on light) — that's its only permitted variation.
 
 ### Palette
 
@@ -43,6 +54,6 @@ Heroes, iconography, imagery rules, hero motifs, and the chart palette are all c
 
 ## Out-of-scope at v1
 
-- Custom Qortex motif library (5–6 designed orb compositions) — deferred to v2.
+- Custom QORTEX motif library (5–6 designed orb compositions) — deferred to v2.
 - Photography commission / custom illustration system — deferred to v2.
 - AI-generated photography — explicitly rejected.

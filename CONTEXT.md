@@ -1,6 +1,6 @@
-# Qortex Marketing Design
+# QORTEX Marketing Design
 
-A design system and template library that lets AI coding agents produce on-brand Qortex marketing artifacts across four output channels.
+A design system and template library that lets AI coding agents produce on-brand QORTEX marketing artifacts across four output channels.
 
 ## Language
 
@@ -9,7 +9,7 @@ An output medium with its own rendering constraints. The four in-scope channels 
 _Avoid_: Medium, platform, surface
 
 **Brand book**:
-The voice, tone, mission, and visual-identity rules of Qortex. Read by humans absorbing the brand and by AI deciding how to *say* something.
+The voice, tone, mission, and visual-identity rules of QORTEX. Read by humans absorbing the brand and by AI deciding how to *say* something.
 _Avoid_: Brand guide, style guide, brand manual
 
 **Design system**:
@@ -41,11 +41,11 @@ A directory containing a `SKILL.md` file plus bundled resources, installable int
 _Avoid_: Plugin, command, tool
 
 **qortex-brand skill**:
-THE single skill this repo ships. Contains the entire brand book, design system, template library, and render tooling. Triggers on any Qortex marketing artifact request (landing page, deck, email, social card, voice review). Internally routes to the right channel docs and template.
-_Avoid_: Qortex CLI, design-system CLI, marketing kit
+THE single skill this repo ships. Contains the entire brand book, design system, template library, and render tooling. Triggers on any QORTEX marketing artifact request (landing page, deck, email, social card, voice review). Internally routes to the right channel docs and template.
+_Avoid_: QORTEX CLI, design-system CLI, marketing kit
 
 **Specimen**:
-A real sentence (or component, or layout) from existing on-brand Qortex output, captured verbatim so an AI agent can pattern-match against it. The brand book uses specimens, not adjective lists, to encode voice.
+A real sentence (or component, or layout) from existing on-brand QORTEX output, captured verbatim so an AI agent can pattern-match against it. The brand book uses specimens, not adjective lists, to encode voice.
 _Avoid_: Example, sample (too generic)
 
 **Anti-specimen**:
@@ -61,7 +61,7 @@ _Avoid_: Bad example, don't-do
 ## Example dialogue
 
 > **Founder:** "Can we use the hero orbs from the website in our pitch deck cover slide?"
-> **Designer:** "The orbs are a **channel-specific element** for web — they need animation and CSS blur to work. The pitch deck needs its own **channel-adapted** hero that does the same job (signal 'we are Qortex, big idea coming') but with slide-friendly primitives: probably a static gradient + the wordmark + one bold headline."
+> **Designer:** "The orbs are a **channel-specific element** for web — they need animation and CSS blur to work. The pitch deck needs its own **channel-adapted** hero that does the same job (signal 'we are QORTEX, big idea coming') but with slide-friendly primitives: probably a static gradient + the wordmark + one bold headline."
 
 ## Flagged ambiguities
 

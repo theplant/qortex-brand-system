@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 220" role="img" aria-label="QORTEX">
+  <title>QORTEX wordmark</title>
+  <defs>
+    <style>
+      /*
+       * The wordmark is set in Sora 800 with tight negative tracking, matching
+       * the typeset "QORTEX" half of the official logo (assets/qortex-logo-light.png).
+       *
+       * Fill is currentColor so a consuming context controls the colour via CSS:
+       *   on dark surfaces   color: #FFFFFF;
+       *   on light surfaces  color: var(--navy);
+       *
+       * The @import lets the file render correctly when opened standalone in a
+       * browser. Inline embeds (e.g. social cards) inherit the host document's
+       * loaded Sora and don't depend on the import.
+       */
+      @import url("https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;display=swap");
+      .qortex-wordmark {
+        font-family: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-weight: 800;
+        font-size: 200px;
+        letter-spacing: -8px;
+        fill: currentColor;
+      }
+    </style>
+  </defs>
+  <text class="qortex-wordmark" x="0" y="170">QORTEX</text>
+</svg>

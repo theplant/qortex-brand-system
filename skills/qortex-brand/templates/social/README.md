@@ -42,7 +42,7 @@ Slots are populated by the runner at render time. Defaults are baked into each H
 | Slot           | Flag         | Format                       | Example                                       |
 |----------------|--------------|------------------------------|-----------------------------------------------|
 | Headline       | `--quote`    | HTML; `<em>` for emphasis    | `"Japan-first. <em>Intelligent commerce.</em>"` |
-| Attribution    | `--name`     | Plain text                   | `"Qortex"`                                    |
+| Attribution    | `--name`     | Plain text                   | `"QORTEX"`                                    |
 | Source / role  | `--role`     | Plain text                   | `"qortex.com"` or `"CEO, Acme Co"`            |
 
 The **same content block fills all three aspect ratios** — the templates share slot names and only differ in layout. Write your content once, render to three sizes.
@@ -72,7 +72,7 @@ node skills/qortex-brand/tools/render.mjs \
   out.png \
   --lang=en \
   --quote="Japan-first. <em>Intelligent commerce.</em>" \
-  --name="Qortex" \
+  --name="QORTEX" \
   --role="qortex.com"
 ```
 

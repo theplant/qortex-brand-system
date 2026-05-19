@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="qortex:requires-logo" content="true" />
-  <title>Qortex customer-logo card 16:9</title>
+  <title>QORTEX customer-logo card 16:9</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -65,11 +65,16 @@
     .wordmark {
       position: relative;
       grid-column: 1 / -1;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 26px;
-      letter-spacing: -0.01em;
+      width: 132px;
+      height: auto;
       color: var(--text);
+    }
+    .wordmark-text {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 200px;
+      letter-spacing: -8px;
+      fill: currentColor;
     }
 
     .meta {
@@ -146,7 +151,9 @@
     <div class="orb orb-blue"></div>
     <div class="orb orb-cyan"></div>
 
-    <div class="wordmark">qortex</div>
+    <svg class="wordmark" viewBox="0 0 1080 220" role="img" aria-label="QORTEX">
+      <text class="wordmark-text" x="0" y="170">QORTEX</text>
+    </svg>
 
     <div class="meta">
       <div class="eyebrow" id="eyebrow">Now serving</div>

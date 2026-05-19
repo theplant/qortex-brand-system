@@ -1,17 +1,17 @@
 ---
 name: qortex-brand
-description: Use when producing any on-brand Qortex marketing artifact — landing page, slide deck, email, social card, voice review — across web, slides, email, or social channels in EN or JP. Triggers when the user mentions Qortex marketing, on-brand copy, the Qortex palette/type/voice, or asks to render a Qortex visual.
+description: Use when producing any on-brand QORTEX marketing artifact — landing page, slide deck, email, social card, voice review — across web, slides, email, or social channels in EN or JP. Triggers when the user mentions QORTEX marketing, on-brand copy, the QORTEX palette/type/voice, or asks to render a QORTEX visual.
 ---
 
 # qortex-brand
 
-This skill ships the Qortex brand book, design system, and template library. It is the single source of truth for producing on-brand Qortex marketing across four channels (web, slides, email, social) in EN and JP.
+This skill ships the QORTEX brand book, design system, and template library. It is the single source of truth for producing on-brand QORTEX marketing across four channels (web, slides, email, social) in EN and JP.
 
 ## Three parts
 
 This skill is split into three folders. The split mirrors how a marketer thinks: voice first, system next, template last.
 
-1. **`book/`** — the **brand book**. Voice, mission, visual identity, do/don'ts. Read this to decide *how to say* something and *what counts as Qortex*.
+1. **`book/`** — the **brand book**. Voice, mission, visual identity, do/don'ts. Read this to decide *how to say* something and *what counts as QORTEX*.
 2. **`system/`** — the **design system**. Tokens (`tokens.css`, `tokens.json`), type scale, spacing, components, and per-channel rules under `system/channels/`. Read this to decide *how to render* something.
 3. **`templates/`** — the **template library**. Starting points per channel. Copy a template, customise copy/imagery, render.
 

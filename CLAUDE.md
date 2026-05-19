@@ -2,7 +2,7 @@
 
 ### Brand design system
 
-The Qortex brand book, design system, and template library all live under `skills/qortex-brand/`. Entry point: `skills/qortex-brand/SKILL.md`. Use this skill for any on-brand Qortex marketing artifact (landing page, slide deck, email, social card, voice review) in EN or JP.
+The QORTEX brand book, design system, and template library all live under `skills/qortex-brand/`. Entry point: `skills/qortex-brand/SKILL.md`. Use this skill for any on-brand QORTEX marketing artifact (landing page, slide deck, email, social card, voice review) in EN or JP.
 
 ### Issue tracker
 

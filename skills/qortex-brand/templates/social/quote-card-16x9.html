@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Qortex quote card 16:9</title>
+  <title>QORTEX quote card 16:9</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -61,11 +61,16 @@
 
     .wordmark {
       position: relative;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 26px;
-      letter-spacing: -0.01em;
+      width: 132px;
+      height: auto;
       color: var(--text);
+    }
+    .wordmark-text {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 200px;
+      letter-spacing: -8px;
+      fill: currentColor;
     }
 
     .quote {
@@ -122,14 +127,16 @@
     <div class="orb orb-blue"></div>
     <div class="orb orb-cyan"></div>
 
-    <div class="wordmark">qortex</div>
+    <svg class="wordmark" viewBox="0 0 1080 220" role="img" aria-label="QORTEX">
+      <text class="wordmark-text" x="0" y="170">QORTEX</text>
+    </svg>
 
     <blockquote class="quote" id="quote">
       Japan-first. <em>Intelligent commerce.</em>
     </blockquote>
 
     <div class="attribution">
-      <span class="name" id="name">Qortex</span>
+      <span class="name" id="name">QORTEX</span>
       <span class="role" id="role">qortex.com</span>
     </div>
   </div>

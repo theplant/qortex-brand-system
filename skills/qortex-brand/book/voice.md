@@ -1,6 +1,6 @@
-# Qortex voice
+# QORTEX voice
 
-Voice is encoded as **specimens + anti-specimens**, not as adjective lists. Pattern-match against the real Qortex sentences below before generating copy.
+Voice is encoded as **specimens + anti-specimens**, not as adjective lists. Pattern-match against the real QORTEX sentences below before generating copy.
 
 v1 seeds the `Headlines` section only. Subsequent issues add `Subheads`, `Paragraphs`, `CTAs`, `Eyebrows`, and `Microcopy` using the same shape.
 
@@ -8,8 +8,8 @@ v1 seeds the `Headlines` section only. Subsequent issues add `Subheads`, `Paragr
 
 For each move (headline, subhead, …), there is a `### Specimens` block and a `### Anti-specimens` block.
 
-- **Specimens** are real Qortex sentences captured verbatim from qortex.com. Do not paraphrase them; pattern-match against them.
-- **Anti-specimens** are written to sound like generic enterprise SaaS copy that a Qortex draft must *not* drift toward. They are the strawman — if your draft sounds closer to the anti-specimen than the specimen, rewrite.
+- **Specimens** are real QORTEX sentences captured verbatim from qortex.com. Do not paraphrase them; pattern-match against them.
+- **Anti-specimens** are written to sound like generic enterprise SaaS copy that a QORTEX draft must *not* drift toward. They are the strawman — if your draft sounds closer to the anti-specimen than the specimen, rewrite.
 
 Common moves you'll see across the specimens:
 

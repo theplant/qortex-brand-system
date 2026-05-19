@@ -45,14 +45,14 @@ const QUOTE_EN = {
   // Default content is baked into each template; explicit content here proves
   // the shared-slot contract (same input fills any of the three).
   quote: "Japan-first. <em>Intelligent commerce.</em>",
-  attributionName: "Qortex",
+  attributionName: "QORTEX",
   role: "qortex.com",
 };
 const QUOTE_JA = {
   lang: "ja",
   // Verbatim hero H1 from qortex.com/jp/. Do not paraphrase.
   quote: "日本ファースト。<em>インテリジェントコマース。</em>",
-  attributionName: "Qortex",
+  attributionName: "QORTEX",
   role: "qortex.com",
 };
 const LOGO_EN = {
