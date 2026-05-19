@@ -50,7 +50,8 @@ const QUOTE_EN = {
 };
 const QUOTE_JA = {
   lang: "ja",
-  quote: "日本発の。<em>知能ある商取引。</em>",
+  // Verbatim hero H1 from qortex.com/jp/. Do not paraphrase.
+  quote: "日本ファースト。<em>インテリジェントコマース。</em>",
   attributionName: "Qortex",
   role: "qortex.com",
 };

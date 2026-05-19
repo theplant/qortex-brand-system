@@ -104,11 +104,14 @@
       overflow-wrap: break-word;
     }
 
-    /* JP overrides — see channels/social.md */
+    /* JP overrides — see channels/social.md.
+       Font size dropped from EN's 80px to 60px so a long two-beat katakana
+       headline (e.g. "インテリジェントコマース") fits on one line under the
+       880px headline column without breaking mid-word. */
     :lang(ja) .quote {
       font-family: var(--font-jp);
       font-weight: 700;
-      font-size: 72px;
+      font-size: 60px;
       line-height: 1.8;
       letter-spacing: 0;
       word-break: keep-all;

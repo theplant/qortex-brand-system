@@ -1,7 +1,7 @@
 <mjml>
   <mj-head>
-    <mj-title>Qortex — 日本発の、知能ある商取引。</mj-title>
-    <mj-preview>日本でビジネスを展開するグローバルブランドのための、AIファーストのコンポーザブル・コマースSuite。</mj-preview>
+    <mj-title>Qortex — 日本ファースト。インテリジェントコマース。</mj-title>
+    <mj-preview>日本で事業を展開するグローバルブランドのために設計された、AI ファーストでコンポーザブルなコマース。</mj-preview>
     <mj-font name="Sora" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;display=swap" />
     <mj-font name="Noto Sans JP" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" />
     <mj-attributes>
@@ -33,7 +33,7 @@
           line-height="1.6"
           color="{{navy}}"
         >
-          日本発の。<em>知能ある商取引。</em>
+          日本ファースト。<em>インテリジェントコマース。</em>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -41,13 +41,13 @@
     <mj-section background-color="#FFFFFF" padding="8px 32px">
       <mj-column>
         <mj-text css-class="jp-body">
-          Qortexは、日本でビジネスを展開するグローバルブランドのための、AIファーストのコンポーザブル・コマースSuiteです。日本で最も要求の厳しいブランドのために20年間構築してきた知見を、ひとつのプラットフォームに凝縮しました。
+          日本で事業を展開するグローバルブランドのために設計された、AI ファーストでコンポーザブルなコマース。日本でもっとも要求水準の高いブランドに 20 年寄り添ってきた経験から生まれました。
         </mj-text>
         <mj-text css-class="jp-body" padding-top="12px">
-          日本特有のシステム連携は標準搭載。AIレイヤーはチームが既に使うツールに組み込まれています。導入は共同設計、迅速に出荷。
+          日本ネイティブのインテグレーションは標準装備。AI レイヤーは、チームが普段働く場所に組み込まれます。共に設計、素早く公開。
         </mj-text>
         <mj-text css-class="jp-body" padding-top="12px">
-          実際にご覧ください。
+          次の可能性を、ご一緒に。
         </mj-text>
       </mj-column>
     </mj-section>
