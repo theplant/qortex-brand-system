@@ -1,0 +1,9 @@
+<!--
+  Section divider — a 1px hairline rule between newsletter sections.
+  Used by the newsletter template, available to any future multi-section email.
+-->
+<mj-section background-color="#FFFFFF" padding="0 32px">
+  <mj-column>
+    <mj-divider border-color="#E1E7F0" border-width="1px" padding="8px 0" />
+  </mj-column>
+</mj-section>

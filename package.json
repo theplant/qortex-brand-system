@@ -5,10 +5,11 @@
   "type": "module",
   "description": "Qortex brand book, design system, and template library — the qortex-brand skill.",
   "scripts": {
-    "test": "npm run test:tokens && npm run test:snapshots",
+    "test": "npm run test:tokens && npm run email:build && npm run test:snapshots",
     "test:tokens": "node skills/qortex-brand/tools/test-token-sync.mjs",
     "test:snapshots": "node skills/qortex-brand/tools/test-snapshots.mjs",
-    "snapshots:update": "node skills/qortex-brand/tools/test-snapshots.mjs --update",
+    "snapshots:update": "npm run email:build && node skills/qortex-brand/tools/test-snapshots.mjs --update",
+    "email:build": "node skills/qortex-brand/templates/email/build.mjs",
     "render": "node skills/qortex-brand/tools/render.mjs"
   },
   "devDependencies": {

@@ -81,19 +81,39 @@ function quoteCase(template, w, h, langSuffix, content) {
   };
 }
 
+function emailCase(template, viewportWidth, langSuffix) {
+  return {
+    id: `${template}.${langSuffix}.w${viewportWidth}`,
+    template: resolve(SKILL_ROOT, `templates/email/${template}-${langSuffix}.html`),
+    baseline: resolve(
+      SKILL_ROOT,
+      `templates/email/__snapshots__/${template}-${langSuffix}-w${viewportWidth}.png`
+    ),
+    width: viewportWidth,
+    height: 800, // initial viewport height; fullPage screenshot grows as needed
+    fullPage: true,
+  };
+}
+
 const cases = [
-  // Quote cards — same content slots, three aspect ratios, EN + JP each.
+  // Social — quote cards. Same content slots, three aspect ratios, EN + JP each.
   quoteCase("quote-card-1x1", 1080, 1080, "en", QUOTE_EN),
   quoteCase("quote-card-1x1", 1080, 1080, "ja", QUOTE_JA),
   quoteCase("quote-card-16x9", 1200, 630, "en", QUOTE_EN),
   quoteCase("quote-card-16x9", 1200, 630, "ja", QUOTE_JA),
   quoteCase("quote-card-9x16", 1080, 1920, "en", QUOTE_EN),
   quoteCase("quote-card-9x16", 1080, 1920, "ja", QUOTE_JA),
-  // Logo cards — customer logo + eyebrow + name, two aspect ratios.
+  // Social — logo cards. Customer logo + eyebrow + name, two aspect ratios.
   quoteCase("logo-card-1x1", 1080, 1080, "en", LOGO_EN),
   quoteCase("logo-card-1x1", 1080, 1080, "ja", LOGO_JA),
   quoteCase("logo-card-16x9", 1200, 630, "en", LOGO_EN),
   quoteCase("logo-card-16x9", 1200, 630, "ja", LOGO_JA),
+  // Email — compiled HTML rendered at 600px (mobile/inbox-default) and 700px
+  // (desktop with the fixed-width email centred). Full-page screenshot.
+  emailCase("launch", 600, "en"),
+  emailCase("launch", 700, "en"),
+  emailCase("launch", 600, "ja"),
+  emailCase("launch", 700, "ja"),
 ];
 
 function loadPng(path) {
@@ -113,6 +133,7 @@ async function runCase(c) {
     role: c.role,
     eyebrow: c.eyebrow,
     logo: c.logo,
+    fullPage: c.fullPage,
   });
 
   const size = statSync(tmpOut).size;

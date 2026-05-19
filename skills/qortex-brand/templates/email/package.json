@@ -1,0 +1,14 @@
+{
+  "name": "@qortex-brand/email",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Qortex email templates — MJML source compiled to inline-styled HTML.",
+  "scripts": {
+    "build": "node build.mjs",
+    "build:check": "node build.mjs --check"
+  },
+  "dependencies": {
+    "mjml": "^4.18.0"
+  }
+}

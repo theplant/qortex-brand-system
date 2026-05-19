@@ -1,0 +1,19 @@
+<!--
+  Header band — flat navy strip with the wordmark.
+  Emails strip CSS gradients and filters unreliably; this partial uses a single
+  solid background colour token so it survives Outlook, Gmail, Apple Mail, and
+  HubSpot's source editor.
+-->
+<mj-section background-color="{{navy}}" padding="32px 24px">
+  <mj-column>
+    <mj-text
+      font-family="Sora, Arial, sans-serif"
+      font-weight="700"
+      font-size="22px"
+      color="#FFFFFF"
+      letter-spacing="-0.5px"
+    >
+      qortex
+    </mj-text>
+  </mj-column>
+</mj-section>

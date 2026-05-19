@@ -1,0 +1,61 @@
+<mjml>
+  <mj-head>
+    <mj-title>Qortex — Japan-first. Intelligent commerce.</mj-title>
+    <mj-preview>An AI-first composable commerce suite for global brands operating in Japan.</mj-preview>
+    <mj-font name="Sora" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;display=swap" />
+    <mj-font name="Figtree" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&amp;display=swap" />
+    <mj-attributes>
+      <mj-all font-family="Figtree, Arial, sans-serif" />
+      <mj-text color="{{navy}}" font-size="16px" line-height="1.6" />
+      <mj-section padding="0" />
+    </mj-attributes>
+    <mj-style>
+      body { margin: 0; padding: 0; background: #F4F6FA; }
+      a { color: {{cyan}}; }
+      em { font-style: italic; }
+      @media only screen and (prefers-color-scheme: dark) {
+        /* Email dark-mode rules are advisory only — Gmail iOS / Outlook on Mac
+           will override colours regardless. We let the navy header survive
+           dark-mode and the white body invert in clients that auto-darken. */
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#F4F6FA" width="600px">
+
+    <!-- @include partials/header.mjml -->
+
+    <mj-section background-color="#FFFFFF" padding="40px 32px 8px 32px">
+      <mj-column>
+        <mj-text
+          font-family="Sora, Arial, sans-serif"
+          font-weight="800"
+          font-size="32px"
+          line-height="1.1"
+          letter-spacing="-0.5px"
+          color="{{navy}}"
+        >
+          Japan-first. <em>Intelligent commerce.</em>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF" padding="8px 32px">
+      <mj-column>
+        <mj-text>
+          We're launching Qortex — an AI-first composable commerce suite for global brands operating in Japan. Twenty years of building for the most demanding brands in Japan, condensed into a single platform.
+        </mj-text>
+        <mj-text padding-top="12px">
+          Japan-native integrations come built-in. The AI layer is embedded where your team already works. Deployment is designed together and shipped fast.
+        </mj-text>
+        <mj-text padding-top="12px">
+          See it in action.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/cta-button.mjml -->
+
+    <!-- @include partials/footer.mjml -->
+
+  </mj-body>
+</mjml>

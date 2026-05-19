@@ -1,0 +1,30 @@
+<!--
+  Footer — company info + unsubscribe. Single column, small type, muted colour
+  on a light surface. Unsubscribe link is required by every ESP we ship through
+  (HubSpot, Mailchimp, ESP-agnostic export).
+-->
+<mj-section background-color="#F4F6FA" padding="32px 32px 40px 32px">
+  <mj-column>
+    <mj-text
+      font-family="Figtree, Arial, sans-serif"
+      font-size="12px"
+      color="#5C6B85"
+      line-height="1.6"
+      align="center"
+    >
+      © Qortex.<br />
+      Tokyo, Japan
+    </mj-text>
+    <mj-text
+      font-family="Figtree, Arial, sans-serif"
+      font-size="12px"
+      color="#5C6B85"
+      align="center"
+      padding-top="12px"
+    >
+      <a href="{{unsubscribe-href}}" style="color:#5C6B85;text-decoration:underline;">Unsubscribe</a>
+      &nbsp;·&nbsp;
+      <a href="https://qortex.com" style="color:#5C6B85;text-decoration:underline;">qortex.com</a>
+    </mj-text>
+  </mj-column>
+</mj-section>

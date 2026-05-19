@@ -85,6 +85,7 @@ export async function render({
   role,
   eyebrow,
   logo,
+  fullPage = false,
 }) {
   const browser = await puppeteer.launch({
     headless: "new",
@@ -167,7 +168,12 @@ export async function render({
     const absOutput = isAbsolute(outputPath)
       ? outputPath
       : resolve(process.cwd(), outputPath);
-    await page.screenshot({ path: absOutput, type: "png", omitBackground: false });
+    await page.screenshot({
+      path: absOutput,
+      type: "png",
+      omitBackground: false,
+      fullPage,
+    });
 
     const size = statSync(absOutput).size;
     if (size === 0) {
@@ -196,6 +202,7 @@ if (isDirectInvocation) {
       role: flags.role,
       eyebrow: flags.eyebrow,
       logo: flags.logo,
+      fullPage: !!flags["full-page"],
     });
     console.log(`rendered ${result.path} (${result.size} bytes)`);
   } catch (err) {

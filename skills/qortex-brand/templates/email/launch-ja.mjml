@@ -1,0 +1,60 @@
+<mjml>
+  <mj-head>
+    <mj-title>Qortex — 日本発の、知能ある商取引。</mj-title>
+    <mj-preview>日本でビジネスを展開するグローバルブランドのための、AIファーストのコンポーザブル・コマースSuite。</mj-preview>
+    <mj-font name="Sora" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;display=swap" />
+    <mj-font name="Noto Sans JP" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" />
+    <mj-attributes>
+      <mj-all font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Yu Gothic', sans-serif" />
+      <mj-text color="{{navy}}" font-size="16px" line-height="1.8" />
+      <mj-section padding="0" />
+    </mj-attributes>
+    <mj-style>
+      body { margin: 0; padding: 0; background: #F4F6FA; }
+      a { color: {{cyan}}; }
+      em { font-style: normal; color: {{cyan}}; }
+      /* JP overrides — word-break + overflow-wrap mirror channels/social.md.
+         Email clients honour these inconsistently but Apple Mail and modern
+         Outlook respect them. */
+      .jp-headline, .jp-body { word-break: keep-all; overflow-wrap: anywhere; }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#F4F6FA" width="600px">
+
+    <!-- @include partials/header.mjml -->
+
+    <mj-section background-color="#FFFFFF" padding="40px 32px 8px 32px">
+      <mj-column>
+        <mj-text
+          css-class="jp-headline"
+          font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Yu Gothic', sans-serif"
+          font-weight="700"
+          font-size="28px"
+          line-height="1.6"
+          color="{{navy}}"
+        >
+          日本発の。<em>知能ある商取引。</em>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF" padding="8px 32px">
+      <mj-column>
+        <mj-text css-class="jp-body">
+          Qortexは、日本でビジネスを展開するグローバルブランドのための、AIファーストのコンポーザブル・コマースSuiteです。日本で最も要求の厳しいブランドのために20年間構築してきた知見を、ひとつのプラットフォームに凝縮しました。
+        </mj-text>
+        <mj-text css-class="jp-body" padding-top="12px">
+          日本特有のシステム連携は標準搭載。AIレイヤーはチームが既に使うツールに組み込まれています。導入は共同設計、迅速に出荷。
+        </mj-text>
+        <mj-text css-class="jp-body" padding-top="12px">
+          実際にご覧ください。
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- @include partials/cta-button.mjml -->
+
+    <!-- @include partials/footer.mjml -->
+
+  </mj-body>
+</mjml>
