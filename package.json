@@ -1,0 +1,19 @@
+{
+  "name": "qortex-brand-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Qortex brand book, design system, and template library — the qortex-brand skill.",
+  "scripts": {
+    "test": "npm run test:tokens && npm run test:snapshots",
+    "test:tokens": "node skills/qortex-brand/tools/test-token-sync.mjs",
+    "test:snapshots": "node skills/qortex-brand/tools/test-snapshots.mjs",
+    "snapshots:update": "node skills/qortex-brand/tools/test-snapshots.mjs --update",
+    "render": "node skills/qortex-brand/tools/render.mjs"
+  },
+  "devDependencies": {
+    "pixelmatch": "^5.3.0",
+    "pngjs": "^7.0.0",
+    "puppeteer": "^22.15.0"
+  }
+}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Qortex quote card 1:1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Sora:wght@600;700;800&family=Noto+Sans+JP:wght@500;700&display=swap"
+  />
+  <link rel="stylesheet" href="../../system/tokens.css" />
+  <style>
+    /* Card frame — fixed 1080×1080. The Puppeteer runner takes the viewport
+       at exactly that size, so the card fills it edge-to-edge. */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1080px;
+      height: 1080px;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    .card {
+      position: relative;
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      padding: 88px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Static blurred-orb composition — the channel-adapted hero motif. */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    .orb-cyan {
+      width: 720px;
+      height: 720px;
+      right: -180px;
+      bottom: -180px;
+      background: radial-gradient(circle at center, var(--cyan-bright) 0%, var(--cyan) 45%, transparent 70%);
+    }
+    .orb-blue {
+      width: 540px;
+      height: 540px;
+      left: -120px;
+      top: -120px;
+      background: radial-gradient(circle at center, var(--blue) 0%, transparent 70%);
+      opacity: 0.6;
+    }
+
+    .wordmark {
+      position: relative;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .quote {
+      position: relative;
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text);
+      max-width: 880px;
+    }
+
+    .attribution {
+      position: relative;
+      font-family: var(--font-body);
+      color: var(--text2);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+    .attribution .name {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .attribution .role {
+      color: var(--text3);
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* EN overrides */
+    :lang(en) .quote {
+      font-size: 80px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+
+    /* JP overrides — see channels/social.md */
+    :lang(ja) .quote {
+      font-family: var(--font-jp);
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 1.8;
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    :lang(ja) .attribution {
+      font-family: var(--font-jp);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="orb orb-blue"></div>
+    <div class="orb orb-cyan"></div>
+
+    <div class="wordmark">qortex</div>
+
+    <blockquote class="quote" id="quote">
+      Japan-first. <em>Intelligent commerce.</em>
+    </blockquote>
+
+    <div class="attribution">
+      <span class="name" id="name">Qortex</span>
+      <span class="role" id="role">qortex.com</span>
+    </div>
+  </div>
+</body>
+</html>

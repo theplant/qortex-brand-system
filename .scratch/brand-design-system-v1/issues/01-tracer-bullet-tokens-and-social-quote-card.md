@@ -1,6 +1,6 @@
 # Tracer bullet — tokens, brand book seed, and social quote card 1:1
 
-Status: ready-for-agent
+Status: ready-for-human
 
 ## Parent
 
@@ -44,3 +44,32 @@ Bilingual rendering is built in from this slice — every subsequent slice inher
 None — can start immediately.
 
 ## Comments
+
+### 2026-05-20 — implementation pass
+
+Tracer-bullet slice landed. All acceptance criteria satisfied:
+
+- `skills/qortex-brand/system/tokens.css` — 22 tokens in `:root` (brand colours `--navy`, `--blue`, `--cyan`, `--cyan-bright`; text on dark `--text/2/3`; backgrounds `--bg/2/3`; surface `--border`, `--card`; status `--green/-bg`, `--amber/-bg`; shadows `--shadow-sm/md/lg`; type stack `--font-display`, `--font-body`, `--font-jp`).
+- `skills/qortex-brand/system/tokens.json` — mirror of the same 22 tokens with matching normalised values.
+- `skills/qortex-brand/tools/test-token-sync.mjs` — parses both files, normalises whitespace/hex casing, fails on missing tokens or value mismatch. Verified the negative case: drifting one value triggers exit 1 with a per-token diff.
+- `skills/qortex-brand/SKILL.md` — entry point with three-part structure (book / system / templates), reading order, v1 state, and the deferred-decisions list pulled from PRD §"Out of Scope" so v2 starts from a known open list.
+- `CLAUDE.md` — "Brand design system" section added above "Issue tracker", pointing at `skills/qortex-brand/SKILL.md`.
+- `skills/qortex-brand/book/visual-identity.md` — locked core (wordmark, palette, type pairing) explicitly distinguished from channel-adapted (heroes, iconography, imagery) which is seeded as a placeholder for follow-on issues.
+- `skills/qortex-brand/book/voice.md` — `Headlines` section with 3 specimens captured verbatim from qortex.com ("Japan-first. _Intelligent commerce._" / "AI embedded where your team already works." / "Designed together. _Shipped fast._") paired with 3 anti-specimens written in generic-SaaS register. Contrast principle made explicit at the end of the section.
+- `skills/qortex-brand/system/channels/social.md` — channel constraints (static raster, fixed aspect ratios, no animation, type-heavy), aspect-ratio table (1x1 ships now; 16x9 / 9x16 noted for follow-ons), what survives translation vs what adapts, full EN and JP overrides matching the rules used on qortex.com.
+- `skills/qortex-brand/templates/social/quote-card-1x1.html` — 1080×1080 quote card using only token vars (no hex literals, no raw font names). Loads Sora / Figtree / Noto Sans JP from Google Fonts and references `tokens.css` via relative import. Branches on `:lang(en)` / `:lang(ja)` for the per-language overrides defined in `social.md`.
+- `skills/qortex-brand/tools/render.mjs` — Puppeteer-based render runner. Takes `(template-path, viewport-w, viewport-h, output-path)` and optional `--lang`, `--quote`, `--name`, `--role` flags. Waits on `document.fonts.ready` before screenshotting. Asserts non-zero output. This is the only place in the repo that knows about a headless browser.
+- `skills/qortex-brand/tools/test-snapshots.mjs` — renders the EN and JP quote cards into a temp file, asserts non-zero, then diffs against the committed baselines under `templates/social/__snapshots__/` using `pixelmatch` with a 0.5% pixel-diff tolerance (generous enough to absorb macOS dev / Linux CI font-rendering jitter, tight enough to catch layout overflow or token drift). `--update` flag regenerates baselines.
+- Baselines committed: `quote-card-1x1-en.png` (175 KB) and `quote-card-1x1-ja.png` (175 KB). Both render on-brand: navy background, blurred cyan + blue orbs, lowercase Sora wordmark top-left, headline filling centre, attribution bottom-left. JP variant uses Noto Sans JP at `line-height: 1.8` with `word-break: keep-all` — visibly looser than EN as the rule prescribes.
+- Single-command run: `npm install && npm test` runs token sync then snapshot test. Both pass.
+
+#### Decisions worth recording
+
+- **Tokens widened beyond the AC.** The AC lists colours + shadows. I added `--font-display`, `--font-body`, `--font-jp` to the same file so the template never hard-codes a font-family. The token-sync test counts these too. If we don't want type tokens in v1, they're easy to pull.
+- **Puppeteer over Playwright.** Smaller install (one Chromium download vs Playwright's three), one binary to manage. Either would work; the runner abstracts the choice.
+- **0.5% pixel-diff tolerance.** Pixel-perfect snapshots are brittle across font-rendering hosts. The tolerance is wide enough to survive macOS / Linux differences but narrow enough to catch a layout overflow or a swapped colour. Re-baseline locally before pushing if you change the template intentionally — `npm run snapshots:update`.
+- **No additional cleanup of `node_modules`.** Already covered by `.gitignore`.
+
+#### What this slice proves
+
+An agent reading `skills/qortex-brand/SKILL.md` can now navigate to voice → social-channel rules → template → run `npm run render` to produce an on-brand 1:1 quote card in either EN or JP. Every layer of the system (tokens, book, channel rules, template, render runtime, tests) has at least one working instance. Follow-on issues extend each layer without inventing a new pattern.
