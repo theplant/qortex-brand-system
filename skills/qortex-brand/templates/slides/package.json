@@ -1,0 +1,22 @@
+{
+  "name": "@qortex-brand/slides",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "QORTEX slide templates — Slidev source compiled to static HTML decks.",
+  "scripts": {
+    "dev": "slidev sales-pitch.md --open",
+    "build": "slidev build sales-pitch.md --out dist/sales-pitch-en && slidev build sales-pitch-ja.md --out dist/sales-pitch-ja",
+    "build:en": "slidev build sales-pitch.md --out dist/sales-pitch-en",
+    "build:ja": "slidev build sales-pitch-ja.md --out dist/sales-pitch-ja",
+    "export": "slidev export sales-pitch.md --output dist/sales-pitch.pdf"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.0",
+    "@slidev/theme-default": "^0.25.0",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.60.0"
+  }
+}

@@ -86,6 +86,8 @@ export async function render({
   eyebrow,
   logo,
   fullPage = false,
+  waitForSelector,
+  waitForTimeout,
 }) {
   const browser = await puppeteer.launch({
     headless: "new",
@@ -145,6 +147,16 @@ export async function render({
       { lang, quote, name, role, eyebrow, logoSrc }
     );
 
+    // Wait for any client-rendered selector before the font/image wait below.
+    // Used by Slidev decks, which are Vue SPAs whose slide DOM only exists
+    // after hydration.
+    if (waitForSelector) {
+      await page.waitForSelector(waitForSelector, { timeout: 15000 });
+    }
+    if (waitForTimeout) {
+      await new Promise((r) => setTimeout(r, waitForTimeout));
+    }
+
     // Wait for web fonts AND any inline-set <img> sources to load.
     await page.evaluate(async () => {
       if (document.fonts && document.fonts.ready) {
@@ -203,6 +215,8 @@ if (isDirectInvocation) {
       eyebrow: flags.eyebrow,
       logo: flags.logo,
       fullPage: !!flags["full-page"],
+      waitForSelector: flags["wait-for-selector"],
+      waitForTimeout: flags["wait-ms"] ? Number(flags["wait-ms"]) : undefined,
     });
     console.log(`rendered ${result.path} (${result.size} bytes)`);
   } catch (err) {

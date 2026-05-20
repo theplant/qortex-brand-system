@@ -1,0 +1,13 @@
+{
+  "name": "slidev-theme-qortex",
+  "version": "0.1.0",
+  "private": true,
+  "description": "QORTEX Slidev theme — imports tokens.css and exposes brand layouts (cover, section-break, content, two-column, quote, stat).",
+  "engines": {
+    "slidev": ">=0.36.0"
+  },
+  "keywords": [
+    "slidev-theme",
+    "qortex"
+  ]
+}

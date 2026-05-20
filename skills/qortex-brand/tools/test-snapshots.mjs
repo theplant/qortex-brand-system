@@ -96,6 +96,24 @@ function emailCase(template, viewportWidth, langSuffix) {
   };
 }
 
+function slideCase(deck, langSuffix) {
+  // Slides are rendered by `slidev export --format png` (run via
+  // `npm run slides:export`). The test just diffs the freshly-exported PNG
+  // against the committed baseline.
+  return {
+    id: `${deck}.${langSuffix}.slide-1`,
+    kind: "slide",
+    exported: resolve(
+      SKILL_ROOT,
+      `templates/slides/dist/${deck}-${langSuffix}-slide-1/1.png`
+    ),
+    baseline: resolve(
+      SKILL_ROOT,
+      `templates/slides/__snapshots__/${deck}-${langSuffix}-slide-1.png`
+    ),
+  };
+}
+
 const cases = [
   // Social — quote cards. Same content slots, three aspect ratios, EN + JP each.
   quoteCase("quote-card-1x1", 1080, 1080, "en", QUOTE_EN),
@@ -119,46 +137,34 @@ const cases = [
   emailCase("newsletter", 700, "en"),
   emailCase("newsletter", 600, "ja"),
   emailCase("newsletter", 700, "ja"),
+  // Slides — first slide of each deck, exported by slidev export PNG.
+  slideCase("sales-pitch", "en"),
+  slideCase("sales-pitch", "ja"),
 ];
 
 function loadPng(path) {
   return PNG.sync.read(readFileSync(path));
 }
 
-async function runCase(c) {
-  const tmpOut = join(tmpdir(), `${c.id}-${Date.now()}.png`);
-  await render({
-    templatePath: c.template,
-    viewportWidth: c.width,
-    viewportHeight: c.height,
-    outputPath: tmpOut,
-    lang: c.lang,
-    quote: c.quote,
-    name: c.attributionName,
-    role: c.role,
-    eyebrow: c.eyebrow,
-    logo: c.logo,
-    fullPage: c.fullPage,
-  });
-
-  const size = statSync(tmpOut).size;
+function diffAgainstBaseline({ id, actualPath, baseline }) {
+  const size = statSync(actualPath).size;
   if (size === 0) {
-    return { ok: false, id: c.id, reason: "zero-byte render" };
+    return { ok: false, id, reason: "zero-byte render" };
   }
 
-  if (update || !existsSync(c.baseline)) {
-    mkdirSync(dirname(c.baseline), { recursive: true });
-    writeFileSync(c.baseline, readFileSync(tmpOut));
-    return { ok: true, id: c.id, reason: `baseline written (${size} bytes)` };
+  if (update || !existsSync(baseline)) {
+    mkdirSync(dirname(baseline), { recursive: true });
+    writeFileSync(baseline, readFileSync(actualPath));
+    return { ok: true, id, reason: `baseline written (${size} bytes)` };
   }
 
-  const actual = loadPng(tmpOut);
-  const expected = loadPng(c.baseline);
+  const actual = loadPng(actualPath);
+  const expected = loadPng(baseline);
 
   if (actual.width !== expected.width || actual.height !== expected.height) {
     return {
       ok: false,
-      id: c.id,
+      id,
       reason: `dimensions differ: actual ${actual.width}x${actual.height} vs baseline ${expected.width}x${expected.height}`,
     };
   }
@@ -176,19 +182,51 @@ async function runCase(c) {
   const ratio = diffPixels / totalPixels;
 
   if (ratio > PIXEL_DIFF_TOLERANCE) {
-    const diffPath = join(tmpdir(), `${c.id}-diff.png`);
+    const diffPath = join(tmpdir(), `${id}-diff.png`);
     writeFileSync(diffPath, PNG.sync.write(diff));
     return {
       ok: false,
-      id: c.id,
-      reason: `pixel diff ${(ratio * 100).toFixed(3)}% (${diffPixels}/${totalPixels}) exceeds tolerance ${(PIXEL_DIFF_TOLERANCE * 100).toFixed(2)}%; diff at ${diffPath}; actual at ${tmpOut}`,
+      id,
+      reason: `pixel diff ${(ratio * 100).toFixed(3)}% (${diffPixels}/${totalPixels}) exceeds tolerance ${(PIXEL_DIFF_TOLERANCE * 100).toFixed(2)}%; diff at ${diffPath}; actual at ${actualPath}`,
     };
   }
   return {
     ok: true,
-    id: c.id,
+    id,
     reason: `pixel diff ${(ratio * 100).toFixed(3)}% within tolerance`,
   };
+}
+
+async function runCase(c) {
+  // Slide cases: the PNG was produced by `slidev export` ahead of time.
+  // Skip the puppeteer render and diff the exported PNG against the baseline.
+  if (c.kind === "slide") {
+    if (!existsSync(c.exported)) {
+      return {
+        ok: false,
+        id: c.id,
+        reason: `exported slide not found at ${c.exported} — run \`npm run slides:export\` first`,
+      };
+    }
+    return diffAgainstBaseline({ id: c.id, actualPath: c.exported, baseline: c.baseline });
+  }
+
+  const tmpOut = join(tmpdir(), `${c.id}-${Date.now()}.png`);
+  await render({
+    templatePath: c.template,
+    viewportWidth: c.width,
+    viewportHeight: c.height,
+    outputPath: tmpOut,
+    lang: c.lang,
+    quote: c.quote,
+    name: c.attributionName,
+    role: c.role,
+    eyebrow: c.eyebrow,
+    logo: c.logo,
+    fullPage: c.fullPage,
+  });
+
+  return diffAgainstBaseline({ id: c.id, actualPath: tmpOut, baseline: c.baseline });
 }
 
 let allOk = true;

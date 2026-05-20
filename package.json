@@ -5,11 +5,13 @@
   "type": "module",
   "description": "Qortex brand book, design system, and template library — the qortex-brand skill.",
   "scripts": {
-    "test": "npm run test:tokens && npm run email:build && npm run test:snapshots",
+    "test": "npm run test:tokens && npm run email:build && npm run slides:export && npm run test:snapshots",
     "test:tokens": "node skills/qortex-brand/tools/test-token-sync.mjs",
     "test:snapshots": "node skills/qortex-brand/tools/test-snapshots.mjs",
-    "snapshots:update": "npm run email:build && node skills/qortex-brand/tools/test-snapshots.mjs --update",
+    "snapshots:update": "npm run email:build && npm run slides:export && node skills/qortex-brand/tools/test-snapshots.mjs --update",
     "email:build": "node skills/qortex-brand/templates/email/build.mjs",
+    "slides:export": "cd skills/qortex-brand/templates/slides && npx slidev export sales-pitch.md --format png --range 1 --output dist/sales-pitch-en-slide-1 && npx slidev export sales-pitch-ja.md --format png --range 1 --output dist/sales-pitch-ja-slide-1",
+    "slides:build": "cd skills/qortex-brand/templates/slides && npm run build",
     "render": "node skills/qortex-brand/tools/render.mjs"
   },
   "devDependencies": {
