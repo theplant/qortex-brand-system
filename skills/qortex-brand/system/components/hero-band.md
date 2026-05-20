@@ -38,7 +38,7 @@ Five visual layers in z-order:
 
 - **Padding** — `96px 0 120px` desktop, `64px 0 80px` mobile.
 - **Wordmark** — inline SVG, 140px wide. White via `currentColor` (see `../book/visual-identity.md`).
-- **Channel-adapted variants** — see `social.md` (static blurred-orb on each card), `slides.md` (frozen orb-composition.png on cover), `email.md` (flat navy band only).
+- **Channel-adapted variants** — see `social.md` (static blurred-orb on each card), `email.md` (flat navy band only). Slides do not use a hero band — the slides channel is a printed consulting brief with document chrome instead (see `../channels/slides.md`).
 
 ## Code snippet
 

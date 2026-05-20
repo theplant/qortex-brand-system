@@ -1,85 +1,486 @@
 /*
- * QORTEX Slidev theme styles — entry point.
+ * QORTEX Slidev theme — consulting-brief edition.
  *
- * Imports the design-system tokens so every slide colour, font, and shadow
- * resolves to the same value as web, social, and email. Never re-declare a
- * brand colour here; if a token is missing, add it to tokens.css instead.
+ * Light paper surface, navy as ink, cyan as accent. Imports the
+ * design-system tokens so colours, fonts, and shadows resolve to the same
+ * vocabulary as social, email, and web. Layout aesthetics inspired by
+ * a printed McKinsey briefing — document chrome, numbered exhibits,
+ * multi-column frameworks, footnotes.
  */
 @import url("../../../../system/tokens.css");
-@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Sora:wght@600;700;800&family=Noto+Sans+JP:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Sora:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
-/* Reset Slidev's slide container colour so brand layouts can paint navy. */
+/*
+ * Paper palette — variant-local. Tokens stay in tokens.css; these are
+ * theme-local derivations from the navy + cyan brand colours.
+ *   --paper   the slide canvas
+ *   --ink     navy used as text
+ *   --rule    hairline divider tone
+ *   --accent  cyan, used for emphasis + chart strokes
+ */
+:root {
+  --paper: #FAFAF7;
+  --paper-2: #F2F1EB;
+  --paper-3: #E8E6DC;
+  --ink: var(--navy);
+  --ink-2: #2A3760;
+  --ink-3: #5A6280;
+  --ink-4: #8189A6;
+  --rule: rgba(11, 31, 74, 0.15);
+  --rule-soft: rgba(11, 31, 74, 0.08);
+  --accent: var(--cyan);
+  --accent-strong: #006BB3;
+}
+
+/* Reset Slidev's default slide colours so the paper surface paints clean. */
 .slidev-layout {
   font-family: var(--font-body);
-  color: var(--text);
+  color: var(--ink);
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 107, 179, 0.04), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(11, 31, 74, 0.012), rgba(11, 31, 74, 0.012) 1px, transparent 1px, transparent 2px);
+  padding: 0;
+  height: 100%;
 }
 
-/* JP overrides — applied when the slide root has lang="ja". Mirrors the
-   rules in system/channels/slides.md and the per-channel JP overrides used
-   across social and email. */
-[lang="ja"] .slidev-layout {
-  font-family: var(--font-jp);
-}
+/* JP overrides — when html[lang="ja"] or any [lang="ja"] ancestor is active */
+[lang="ja"] .slidev-layout { font-family: var(--font-jp); }
+[lang="ja"] .qx-display,
 [lang="ja"] .qx-headline,
-[lang="ja"] .qx-display {
+[lang="ja"] .qx-cover-title,
+[lang="ja"] .qx-section-h2,
+[lang="ja"] .qx-content-h2 {
   font-family: var(--font-jp);
   font-weight: 700;
   letter-spacing: 0;
+  line-height: 1.4;
   word-break: keep-all;
   overflow-wrap: anywhere;
-  line-height: 1.4;
+}
+[lang="ja"] .qx-body,
+[lang="ja"] p,
+[lang="ja"] li {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
-/* Type tokens used by layouts. */
-.qx-eyebrow {
+/* ───────────────────────────────────────────────────────────────
+   Document chrome — header + footer that bracket every layout
+   ─────────────────────────────────────────────────────────────── */
+.qx-dochead {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: 28px;
+  padding: 56px 80px 16px;
+  border-bottom: 1.5px solid var(--ink);
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--cyan-bright);
 }
-.qx-display {
+.qx-dochead__brand {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 88px;
-  line-height: 1.06;
-  letter-spacing: -0.02em;
-  color: var(--text);
+  font-size: 26px;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
 }
-.qx-headline {
+.qx-dochead__brand::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+.qx-dochead__crumbs {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.qx-dochead__crumbs span {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.qx-dochead__crumbs span::after {
+  content: "›";
+  color: var(--ink-4);
+  font-size: 13px;
+  letter-spacing: 0;
+}
+.qx-dochead__crumbs span:last-child::after { content: none; }
+.qx-dochead__crumbs b { color: var(--ink); font-weight: 600; }
+[lang="ja"] .qx-dochead__crumbs { letter-spacing: 0.08em; text-transform: none; font-weight: 500; }
+.qx-dochead__class {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: right;
+}
+.qx-dochead__class b {
+  color: var(--ink);
+  font-weight: 600;
+  display: block;
+}
+.qx-dochead__class b::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+[lang="ja"] .qx-dochead__class { letter-spacing: 0.08em; text-transform: none; font-weight: 500; }
+
+.qx-docfoot {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 80px 36px;
+  border-top: 1.5px solid var(--ink);
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: auto;
+}
+.qx-docfoot__left { display: flex; gap: 22px; }
+.qx-docfoot__left b { color: var(--ink); font-weight: 600; }
+.qx-docfoot__center {
+  text-align: center;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  text-transform: none;
+  color: var(--ink-4);
+}
+.qx-docfoot__page {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 56px;
-  line-height: 1.1;
+  font-size: 16px;
+  color: var(--ink);
   letter-spacing: -0.02em;
-  color: var(--text);
+  text-align: right;
+  text-transform: none;
 }
-.qx-body {
+.qx-docfoot__page span { color: var(--ink-4); margin: 0 4px; font-weight: 400; }
+[lang="ja"] .qx-docfoot { letter-spacing: 0.08em; text-transform: none; font-weight: 500; }
+
+/* The wrapper any layout uses to provide head + body + foot stack */
+.qx-doc {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Type primitives — used inside layout bodies
+   ─────────────────────────────────────────────────────────────── */
+.qx-eyebrow {
   font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.qx-eyebrow__num {
+  width: 30px;
+  height: 30px;
+  background: var(--ink);
+  color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+[lang="ja"] .qx-eyebrow { letter-spacing: 0.08em; text-transform: none; }
+
+.qx-cover-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 110px;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+.qx-cover-title em {
+  font-style: italic;
+  color: var(--accent-strong);
+  font-weight: 800;
+}
+
+.qx-section-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 96px;
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin: 0;
+}
+.qx-section-h2 em {
+  font-style: italic;
+  color: var(--accent-strong);
+  font-weight: 800;
+}
+
+.qx-content-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+.qx-content-h2 em {
+  font-style: italic;
+  color: var(--accent-strong);
+  font-weight: 800;
+}
+
+.qx-lede {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1.25;
+  color: var(--ink-2);
+  max-width: 1200px;
+  margin: 0 0 24px;
+}
+[lang="ja"] .qx-lede {
+  font-family: var(--font-jp);
+  font-style: normal;
   font-size: 26px;
-  line-height: 1.5;
-  color: var(--text2);
+  line-height: 1.6;
 }
-.qx-stat-figure {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 200px;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: var(--cyan-bright);
-}
-.qx-stat-caption {
+
+/* ───────────────────────────────────────────────────────────────
+   Exhibit bar — used at the top of content / two-column slides
+   ─────────────────────────────────────────────────────────────── */
+.qx-exhibit {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 22px;
+  align-items: center;
+  padding: 14px 22px;
+  background: var(--ink);
+  color: var(--paper);
   font-family: var(--font-body);
-  font-size: 28px;
-  color: var(--text2);
-  max-width: 880px;
-  margin-top: 24px;
 }
-.qx-wordmark {
+.qx-exhibit__tag {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: -0.04em;
-  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
 }
+.qx-exhibit__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+}
+.qx-exhibit__title em { color: var(--accent); font-style: italic; }
+.qx-exhibit__meta {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.qx-exhibit__meta b { color: var(--paper); font-weight: 500; }
+[lang="ja"] .qx-exhibit__meta { letter-spacing: 0.08em; text-transform: none; }
+
+/* ───────────────────────────────────────────────────────────────
+   Bullet hierarchies — used inside content columns
+   ─────────────────────────────────────────────────────────────── */
+.qx-blist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.qx-blist > li {
+  position: relative;
+  padding: 7px 0 7px 24px;
+}
+.qx-blist > li::before {
+  content: "■";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  color: var(--accent-strong);
+  font-size: 10px;
+  line-height: 1;
+}
+.qx-blist > li b { color: var(--ink); font-weight: 600; }
+.qx-blist .sub {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+.qx-blist .sub li {
+  position: relative;
+  padding: 2px 0 2px 18px;
+}
+.qx-blist .sub li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: var(--ink-4);
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Footnotes — print-style citations at the bottom of content slides
+   ─────────────────────────────────────────────────────────────── */
+.qx-footnotes {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--ink-3);
+  line-height: 1.4;
+}
+.qx-footnotes p { margin: 0 0 3px; }
+.qx-footnotes sup {
+  color: var(--accent-strong);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Pull quote — used by quote layout and synthesis columns
+   ─────────────────────────────────────────────────────────────── */
+.qx-pullquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0;
+  padding-left: 28px;
+  border-left: 5px solid var(--accent);
+  max-width: 1400px;
+}
+.qx-pullquote em { font-style: italic; color: var(--accent-strong); }
+.qx-pullquote--small { font-size: 26px; padding-left: 16px; border-left-width: 4px; }
+[lang="ja"] .qx-pullquote {
+  font-family: var(--font-jp);
+  font-style: normal;
+  line-height: 1.5;
+}
+.qx-pullquote-source {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin-top: 18px;
+  padding-left: 33px;
+}
+.qx-pullquote-source b { color: var(--ink); font-weight: 600; }
+
+/* ───────────────────────────────────────────────────────────────
+   Generic prose styling inside layouts — applies to <p>, <ul>, <ol>
+   from the markdown body when the layout uses .qx-prose
+   ─────────────────────────────────────────────────────────────── */
+.qx-prose {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 1000px;
+}
+.qx-prose p { margin: 0 0 14px; }
+.qx-prose p + p { margin-top: 0; }
+.qx-prose strong { color: var(--ink); font-weight: 600; }
+.qx-prose em { color: var(--accent-strong); font-style: italic; }
+.qx-prose ul, .qx-prose ol {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 14px;
+}
+.qx-prose ul li {
+  position: relative;
+  padding: 5px 0 5px 26px;
+}
+.qx-prose ul li::before {
+  content: "■";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  color: var(--accent-strong);
+  font-size: 10px;
+  line-height: 1;
+}
+.qx-prose ul li b, .qx-prose ul li strong { color: var(--ink); font-weight: 600; }
+[lang="ja"] .qx-prose { line-height: 1.8; font-size: 17px; }
+
+/* Metric block (used by stat-style content and synthesis columns) */
+.qx-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.qx-metric__label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.qx-metric__figure {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.qx-metric__figure small {
+  font-size: 13px;
+  color: var(--ink-3);
+  font-weight: 500;
+  margin-left: 3px;
+}
+.qx-metric__note {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--ink-3);
+  font-style: italic;
+}
+[lang="ja"] .qx-metric__label { letter-spacing: 0.08em; text-transform: none; }
