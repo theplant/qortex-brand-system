@@ -96,6 +96,20 @@ function emailCase(template, viewportWidth, langSuffix) {
   };
 }
 
+function webCase(template, viewportWidth, langSuffix) {
+  return {
+    id: `${template}.${langSuffix}.w${viewportWidth}`,
+    template: resolve(SKILL_ROOT, `templates/web/${template}-${langSuffix}.html`),
+    baseline: resolve(
+      SKILL_ROOT,
+      `templates/web/__snapshots__/${template}-${langSuffix}-w${viewportWidth}.png`
+    ),
+    width: viewportWidth,
+    height: 800,
+    fullPage: true,
+  };
+}
+
 function slideCase(deck, langSuffix) {
   // Slides are rendered by `slidev export --format png` (run via
   // `npm run slides:export`). The test just diffs the freshly-exported PNG
@@ -137,6 +151,11 @@ const cases = [
   emailCase("newsletter", 700, "en"),
   emailCase("newsletter", 600, "ja"),
   emailCase("newsletter", 700, "ja"),
+  // Web — feature landing rendered at 1280 (desktop) and 375 (mobile).
+  webCase("feature-landing", 1280, "en"),
+  webCase("feature-landing", 1280, "ja"),
+  webCase("feature-landing", 375, "en"),
+  webCase("feature-landing", 375, "ja"),
   // Slides — first slide of each deck, exported by slidev export PNG.
   slideCase("sales-pitch", "en"),
   slideCase("sales-pitch", "ja"),
