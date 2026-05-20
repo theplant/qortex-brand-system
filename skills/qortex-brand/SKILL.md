@@ -19,26 +19,29 @@ This skill is split into three folders. The split mirrors how a marketer thinks:
 
 Producing an artifact:
 
-1. **Pick a channel.** `system/channels/<channel>.md` tells you what survives translation and what the channel constrains.
-2. **Read the voice.** `book/voice.md` — specimens + anti-specimens. Pattern-match, don't paraphrase.
-3. **Read the visual identity.** `book/visual-identity.md` — what's locked, what's channel-adapted.
-4. **Open `system/tokens.css`** as your colour and type vocabulary. Never hard-code a hex or a font name; always reference a token.
-5. **Pick a template** from `templates/<channel>/`. Each channel's `README.md` (added by follow-on issues) explains when to pick which.
-6. **Render.** For social, use `tools/render.mjs` to produce a PNG.
+1. **Read `book/mission.md`** — one page on what QORTEX is and what it stands against. Sets the posture before you write a word.
+2. **Pick a channel.** `system/channels/<channel>.md` tells you what survives translation and what the channel constrains.
+3. **Read the voice.** `book/voice.md` — six sections (headlines, subheads, paragraphs, CTAs, eyebrows, microcopy), specimens + anti-specimens, EN and JP. Pattern-match, don't paraphrase.
+4. **Run the draft through `book/do-and-dont.md`** before returning. Concrete pair checks across name, headlines, CTAs, register, palette, imagery, JP moves.
+5. **Read the visual identity.** `book/visual-identity.md` — wordmark treatment, locked palette, type pairing.
+6. **Open `system/tokens.css`** as your colour and type vocabulary. Never hard-code a hex or a font name; always reference a token.
+7. **Pick a template** from `templates/<channel>/`. Each channel's `README.md` explains when to pick which template within the channel.
+8. **Render / build.** For social: `tools/render.mjs`. For email: `templates/email/build.mjs`. For slides: `npm run slides:build`. For web: open the HTML in any browser.
 
 ## v1 state
 
-This release is being assembled as **thin vertical slices**. Current state:
+The brand book, design system, and template library are complete across all four channels. Current state:
 
-- Tokens (colours + shadows + type stack) — full set.
-- `book/visual-identity.md` — locked core only; channel-adapted heroes/iconography seeded as placeholders, filled in by later issues.
-- `book/voice.md` — `Headlines` section only.
-- `system/channels/social.md` — social channel rules and EN/JP overrides.
-- `templates/social/` — five starter templates (quote-card at 1:1 / 16:9 / 9:16; logo-card at 1:1 / 16:9) and a picker `README.md`. Each renders in EN and JP.
-- `tools/render.mjs` — Puppeteer renderer with content slots (`--quote`, `--name`, `--role`, `--eyebrow`, `--logo`). The **only** place that knows about a headless browser. Enforces template-declared slot requirements via `<meta name="qortex:requires-logo">`.
-- Tests: token sync + visual snapshot (10 cases — 5 templates × 2 languages).
-
-Subsequent issues (see `.scratch/brand-design-system-v1/issues/`) add slides, email, and web — each as a thin slice through the same stack.
+- **Tokens** — colours, shadows, type stack. Single source: `system/tokens.css`. Mirror: `system/tokens.json`. Token-sync test fails on drift.
+- **Brand book** — `book/mission.md` (one-page what / who / against / tagline), `book/voice.md` (6 sections × specimens + anti-specimens, EN and JP), `book/visual-identity.md` (locked core: brand name, wordmark, palette, type pairing), `book/do-and-dont.md` (12+ concrete do/don't pairs across name, headlines, CTAs, register, palette, imagery, JP moves).
+- **System** — `system/channels/{social,email,slides,web}.md` (channel docs with constraints, overrides, tokens used), `system/components/quote-panel.md` (first promoted component).
+- **Templates**:
+  - `templates/social/` — quote-card at 1:1 / 16:9 / 9:16 + logo-card at 1:1 / 16:9, EN and JP, with picker README.
+  - `templates/email/` — launch + newsletter MJML templates, EN and JP, shared partials (header, footer, cta-button, section-divider), token-bridge build pipeline, picker README.
+  - `templates/slides/` — Slidev project with custom theme (6 layouts), sales-pitch + executive-briefing decks, EN and JP, picker README.
+  - `templates/web/` — feature-landing + case-study HTML templates, EN and JP, shared stylesheet, six reusable HTML blocks, picker README.
+- **Tooling** — `tools/render.mjs` (Puppeteer, the only place that knows about a headless browser; content slots, requires-logo enforcement, full-page mode, wait-for-selector flag). `tools/test-token-sync.mjs` and `tools/test-snapshots.mjs` for CI.
+- **Tests** — 30 snapshot cases (10 social + 8 email + 8 web + 4 slides) at 0.000% diff. Token-sync runs first. Email build + Slidev export run as `npm test` pre-steps.
 
 ## Running checks
 
