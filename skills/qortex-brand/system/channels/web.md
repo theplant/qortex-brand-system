@@ -73,6 +73,24 @@ The same `[lang="ja"]` branching pattern as every other channel. `<html lang="ja
 | `--shadow-md`, `--shadow-lg` | Card hover lifts, modal overlays                              |
 | `--font-display`, `--font-body`, `--font-jp` | Per-language stack                            |
 
+## Components used
+
+The web templates compose these components. Each has its own doc under `../components/`:
+
+| Component         | Where it appears                                                  | Doc                                  |
+|-------------------|-------------------------------------------------------------------|--------------------------------------|
+| `hero-band`       | Top of feature-landing; case-study uses a decorated variant        | `../components/hero-band.md`         |
+| `eyebrow`         | Above every section H2                                            | `../components/eyebrow.md`           |
+| `button`          | Hero dual CTA, CTA band, in-card actions                          | `../components/button.md`            |
+| `card`            | Card grids (modules, audiences, case-study solution)              | `../components/card.md`              |
+| `pill`            | Inline status / tag chips                                         | `../components/pill.md`              |
+| `dashboard-mock`  | Right column of the two-column AI layer                           | `../components/dashboard-mock.md`    |
+| `dark-band`       | Proof band on feature-landing                                     | `../components/dark-band.md`         |
+| `cta-band`        | Closing section on every page                                     | `../components/cta-band.md`          |
+| `quote-panel`     | Results section on case-study                                     | `../components/quote-panel.md`       |
+
+For the spacing scale, container widths, and section padding rules, see `../spacing.md`. For the type scale and per-language type overrides, see `../type-scale.md`.
+
 ## Picker
 
 See `../../templates/web/README.md` for when to pick `feature-landing` vs `case-study`. Both are valid starting points for any QORTEX page; pick by content shape (persuasive vs narrative), not by topic.

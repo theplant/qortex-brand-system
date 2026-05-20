@@ -20,13 +20,14 @@ This skill is split into three folders. The split mirrors how a marketer thinks:
 Producing an artifact:
 
 1. **Read `book/mission.md`** — one page on what QORTEX is and what it stands against. Sets the posture before you write a word.
-2. **Pick a channel.** `system/channels/<channel>.md` tells you what survives translation and what the channel constrains.
+2. **Pick a channel.** `system/channels/<channel>.md` tells you what survives translation and what the channel constrains. Each channel doc cross-references the components and tokens it uses.
 3. **Read the voice.** `book/voice.md` — six sections (headlines, subheads, paragraphs, CTAs, eyebrows, microcopy), specimens + anti-specimens, EN and JP. Pattern-match, don't paraphrase.
 4. **Run the draft through `book/do-and-dont.md`** before returning. Concrete pair checks across name, headlines, CTAs, register, palette, imagery, JP moves.
 5. **Read the visual identity.** `book/visual-identity.md` — wordmark treatment, locked palette, type pairing.
-6. **Open `system/tokens.css`** as your colour and type vocabulary. Never hard-code a hex or a font name; always reference a token.
-7. **Pick a template** from `templates/<channel>/`. Each channel's `README.md` explains when to pick which template within the channel.
-8. **Render / build.** For social: `tools/render.mjs`. For email: `templates/email/build.mjs`. For slides: `npm run slides:build`. For web: open the HTML in any browser.
+6. **Open `system/tokens.css`** as your colour and type vocabulary. Never hard-code a hex or a font name; always reference a token. See `system/type-scale.md` and `system/spacing.md` for the canonical scales.
+7. **Pick a component.** `system/components/<name>.md` documents purpose, anatomy, code snippet, and do/don't for every reused component (button, card, eyebrow, hero-band, pill, dashboard-mock, dark-band, cta-band, quote-panel).
+8. **Pick a template** from `templates/<channel>/`. Each channel's `README.md` explains when to pick which template within the channel.
+9. **Render / build.** For social: `tools/render.mjs`. For email: `templates/email/build.mjs`. For slides: `npm run slides:build`. For web: open the HTML in any browser.
 
 ## v1 state
 
@@ -34,7 +35,7 @@ The brand book, design system, and template library are complete across all four
 
 - **Tokens** — colours, shadows, type stack. Single source: `system/tokens.css`. Mirror: `system/tokens.json`. Token-sync test fails on drift.
 - **Brand book** — `book/mission.md` (one-page what / who / against / tagline), `book/voice.md` (6 sections × specimens + anti-specimens, EN and JP), `book/visual-identity.md` (locked core: brand name, wordmark, palette, type pairing), `book/do-and-dont.md` (12+ concrete do/don't pairs across name, headlines, CTAs, register, palette, imagery, JP moves).
-- **System** — `system/channels/{social,email,slides,web}.md` (channel docs with constraints, overrides, tokens used), `system/components/quote-panel.md` (first promoted component).
+- **System** — `system/tokens.css` + `system/tokens.json`, `system/type-scale.md`, `system/spacing.md`, `system/channels/{social,email,slides,web}.md` (channel docs with constraints, overrides, tokens used), and nine component docs under `system/components/` (button, card, eyebrow, hero-band, pill, dashboard-mock, dark-band, cta-band, quote-panel).
 - **Templates**:
   - `templates/social/` — quote-card at 1:1 / 16:9 / 9:16 + logo-card at 1:1 / 16:9, EN and JP, with picker README.
   - `templates/email/` — launch + newsletter MJML templates, EN and JP, shared partials (header, footer, cta-button, section-divider), token-bridge build pipeline, picker README.
