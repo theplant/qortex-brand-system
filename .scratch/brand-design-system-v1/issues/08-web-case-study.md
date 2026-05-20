@@ -1,6 +1,6 @@
 # Web — case study template
 
-Status: ready-for-agent
+Status: ready-for-human
 
 ## Parent
 
@@ -32,3 +32,22 @@ EN and JP both, snapshots committed.
 - `07-web-channel-tracer.md`
 
 ## Comments
+
+### 2026-05-20 — implementation pass
+
+Case-study template + quote-panel + web README complete:
+
+- `templates/web/case-study-en.html` and `case-study-ja.html` — narrative structure (hero with customer + situation + 2 KPIs → context → challenge → solution + 3 module cards → results + customer quote → CTA). Both files share `feature-landing.css`. Sample customer: "Acme Co", 200-store specialty retailer, 8 weeks to ship Konbini + LINE checkout.
+- Reuses every block from feature-landing where possible: `hero` (decorated), `section-eyebrow-h2-sub`, `card-grid`, `cta band`. Adds three new blocks: `quote-panel`, `kpi-row`, `prose` section — all defined in `feature-landing.css` so both templates share one stylesheet.
+- `system/components/quote-panel.md` — component doc with purpose, anatomy ASCII diagram, code snippet, do/don't. Used by case-study; available to any future narrative page.
+- `templates/web/README.md` — completed picker guide: full table distinguishing feature-landing (persuasive, top-of-funnel) from case-study (narrative, mid/late funnel) on shape AND on funnel stage. Picker rule made explicit: "do you want to argue a value proposition or tell a story?" — don't jam a narrative into a feature-landing layout or vice versa. Reusable-blocks table expanded with `quote-panel`, `kpi-row`, `prose`. Components-referenced table cross-references the quote-panel doc.
+- Snapshot suite extended to 30 cases (10 social + 8 email + 8 web + 4 slides). All 30 pass at 0.000% diff.
+
+#### Decisions worth recording
+
+- **One shared stylesheet, not two.** Adding `case-study.css` would have meant duplicating the hero, section, card-grid, dark-band, and CTA styles. Keeping everything in `feature-landing.css` (mis-named but cheap to rename later) means future templates inherit the full block vocabulary for free.
+- **`quote-panel` documented as a component, not as a one-off case-study block.** The reasoning: any web page can use a quote panel (case-study is the first consumer, others will follow). Promoting it to `system/components/` now establishes the pattern for the design-system completion in issue 10.
+- **Sample customer ("Acme Co") matches the social card's fixture name.** Not a coincidence — keeps the test surface coherent. A real customer story would replace both, in sync.
+- **No new tokens introduced.** Every component on the case-study page resolves through existing tokens. KPI figures use `--cyan-bright`, panel surface uses `--bg2`, etc. The shared stylesheet currently has zero hex literals outside of the dashboard-mock's traffic-light dots (which represent the literal macOS chrome colours and are not a brand surface).
+
+Verified: `npm test` runs 30/30 at 0.000% diff (10 social + 8 email + 8 web + 4 slides). Both case-study HTML files preview correctly via static server.

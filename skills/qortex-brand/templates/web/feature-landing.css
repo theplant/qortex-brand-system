@@ -250,6 +250,98 @@
     .cta-band { text-align: center; padding: 120px 0; }
     .cta-band .btn { margin-top: 16px; }
 
+    /* block: quote-panel (component — see ../../system/components/quote-panel.md) */
+    .quote-panel {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 56px 56px 48px;
+      max-width: 880px;
+      margin: 48px 0 0;
+      position: relative;
+    }
+    .quote-panel::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 56px; height: 2px;
+      background: linear-gradient(to right, var(--cyan), var(--cyan-bright));
+      border-radius: 16px 0 0 0;
+    }
+    .quote-panel blockquote {
+      margin: 0; padding: 0; border: none;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .quote-panel__by {
+      display: flex; align-items: center; gap: 16px;
+      margin-top: 36px;
+    }
+    .quote-panel__portrait {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--card);
+    }
+    .quote-panel__name {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--text);
+    }
+    .quote-panel__role {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text3);
+    }
+    @media (max-width: 720px) {
+      .quote-panel { padding: 32px 28px 28px; }
+    }
+
+    /* block: kpi-row (case-study top-of-page metrics) */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 720px) { .kpi-row { grid-template-columns: 1fr; } }
+    .kpi__figure {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--cyan-bright);
+    }
+    .kpi__caption {
+      font-family: var(--font-body);
+      color: var(--text2);
+      font-size: 16px;
+      margin-top: 12px;
+      max-width: 360px;
+    }
+
+    /* block: prose section (case-study narrative body) */
+    .prose .h2 { margin-top: 0; }
+    .prose p, .prose ul {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text2);
+      max-width: 720px;
+    }
+    .prose p + p { margin-top: 16px; }
+    .prose ul { padding-left: 24px; }
+    .prose li { margin: 8px 0; }
+    .prose strong { color: var(--text); font-weight: 600; }
+
     /* JP overrides */
     :lang(ja) .display,
     :lang(ja) .h2,
@@ -263,6 +355,17 @@
     }
     :lang(ja) .display { font-size: clamp(34px, 5vw, 60px); line-height: 1.5; }
     :lang(ja) .h2 { font-size: clamp(28px, 3.5vw, 40px); line-height: 1.5; }
-    :lang(ja) .sub, :lang(ja) .body { line-height: 1.8; word-break: keep-all; overflow-wrap: anywhere; }
+    :lang(ja) .sub, :lang(ja) .body, :lang(ja) .prose p, :lang(ja) .prose li {
+      line-height: 1.8; word-break: keep-all; overflow-wrap: anywhere;
+    }
     :lang(ja) em { font-style: normal; color: var(--cyan-bright); }
     :lang(ja) .eyebrow { letter-spacing: 0.08em; }
+    :lang(ja) .quote-panel blockquote {
+      font-family: var(--font-jp);
+      font-weight: 700;
+      font-size: clamp(24px, 2.8vw, 36px);
+      line-height: 1.6;
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }

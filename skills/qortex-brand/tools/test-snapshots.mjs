@@ -156,6 +156,11 @@ const cases = [
   webCase("feature-landing", 1280, "ja"),
   webCase("feature-landing", 375, "en"),
   webCase("feature-landing", 375, "ja"),
+  // Web — case study, same viewports.
+  webCase("case-study", 1280, "en"),
+  webCase("case-study", 1280, "ja"),
+  webCase("case-study", 375, "en"),
+  webCase("case-study", 375, "ja"),
   // Slides — first slide of each deck, exported by slidev export PNG.
   slideCase("sales-pitch", "en"),
   slideCase("sales-pitch", "ja"),

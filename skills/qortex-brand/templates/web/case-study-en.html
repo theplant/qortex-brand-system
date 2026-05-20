@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QORTEX — Acme Co case study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Sora:wght@600;700;800&family=Noto+Sans+JP:wght@500;700&display=swap"
+  />
+  <link rel="stylesheet" href="../../system/tokens.css" />
+  <link rel="stylesheet" href="./feature-landing.css" />
+</head>
+<body>
+
+  <!-- block: hero (case-study variant — customer + situation + KPIs) -->
+  <section class="hero">
+    <div class="hero__bg-grid"></div>
+    <div class="hero__orb-cyan"></div>
+    <div class="container hero__inner">
+      <div class="hero__nav">
+        <svg class="wordmark" viewBox="0 0 1080 220" role="img" aria-label="QORTEX">
+          <text class="wordmark-text" x="0" y="170">QORTEX</text>
+        </svg>
+        <div class="hero__nav-links">
+          <a href="#context">Context</a>
+          <a href="#challenge">Challenge</a>
+          <a href="#solution">Solution</a>
+          <a href="#results">Results</a>
+        </div>
+      </div>
+      <span class="eyebrow">Case study</span>
+      <h1 class="display">Acme Co shipped Konbini and LINE checkout in <em>eight weeks.</em></h1>
+      <p class="sub">A 200-store Japanese specialty retailer rebuilt their commerce stack on QORTEX. Here's what changed, how it shipped, and what the first 90 days delivered.</p>
+      <div class="kpi-row">
+        <div>
+          <div class="kpi__figure">8w</div>
+          <div class="kpi__caption">From kick-off to first production traffic.</div>
+        </div>
+        <div>
+          <div class="kpi__figure">+47%</div>
+          <div class="kpi__caption">Checkout conversion on LINE compared to web.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- block: section-eyebrow-h2-sub + prose (context) -->
+  <section class="section" id="context">
+    <div class="container">
+      <div class="prose">
+        <span class="eyebrow">Context</span>
+        <h2 class="h2">200 stores, three legacy systems, one unhappy checkout.</h2>
+        <p>Acme Co runs 200 specialty retail stores across Japan plus a 5-million-MAU e-commerce site. Before QORTEX, their commerce stack was a 12-year-old custom platform stitched to a global ERP, a local payments gateway, and a separate LINE bot — three systems, three databases, three places a customer's order could go wrong.</p>
+        <p>The checkout abandoned at 78%. Konbini orders failed reconciliation 1 in 4 times. LINE didn't talk to web. Customer support spent half its day translating between systems instead of helping customers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- block: section-eyebrow-h2-sub + prose (challenge) -->
+  <section class="section section--alt" id="challenge">
+    <div class="container">
+      <div class="prose">
+        <span class="eyebrow">Challenge</span>
+        <h2 class="h2">"We needed Konbini and LINE checkout in a quarter — not a year."</h2>
+        <p>The board had given the team one buying season. The standard approach (replatform from scratch, run dual stacks for a year, migrate) was off the table. Acme's CFO wanted a number, the COO wanted a date, and the head of e-commerce wanted both without spending the next three quarters on integration debt.</p>
+        <p>Two requirements were non-negotiable:</p>
+        <ul>
+          <li><strong>Konbini reconciliation that doesn't drift.</strong> Every order paid at Lawson, FamilyMart, or Seven-Eleven had to settle without manual intervention.</li>
+          <li><strong>One identity across LINE, web, and store.</strong> A customer who joined via LINE had to recognise their loyalty balance at the store register.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- block: section-eyebrow-h2-sub + card-grid (solution) -->
+  <section class="section" id="solution">
+    <div class="container">
+      <span class="eyebrow">Solution</span>
+      <h2 class="h2">Three QORTEX modules. Pre-built integrations. One configured workflow.</h2>
+      <p class="sub">We deployed Customer Identity, Order Management, and the Marketing Automation module — the smallest set that solved the two non-negotiables. The rest stayed in flight for phase two.</p>
+      <div class="card-grid">
+        <div class="card">
+          <h3 class="h3">Customer Identity</h3>
+          <p class="body">Unified profile across LINE, web, and 200 store registers. JIS address validation, kanji ⇄ romaji on every form.</p>
+        </div>
+        <div class="card">
+          <h3 class="h3">Order Management</h3>
+          <p class="body">Konbini, Pay-easy, COD pre-integrated. Reconciliation runs nightly against payment-gateway exports — no manual matching.</p>
+        </div>
+        <div class="card">
+          <h3 class="h3">Marketing Automation</h3>
+          <p class="body">LINE Messaging API tied to the customer profile. Cart-abandonment and seasonal campaigns ship pre-templated.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- block: section-eyebrow-h2-sub + prose + quote-panel (results) -->
+  <section class="section section--alt" id="results">
+    <div class="container">
+      <div class="prose">
+        <span class="eyebrow">Results</span>
+        <h2 class="h2">Eight weeks to live, +47% LINE conversion, zero reconciliation drift.</h2>
+        <p>First production traffic ran in week eight. Konbini reconciliation has not required a manual match in the four months since launch. LINE checkout converts at 47% above web. Customer-support load dropped 31% in the first quarter.</p>
+        <p>Phase two — Personalisation, PIM, and Content Management — is in flight for Q3.</p>
+      </div>
+      <aside class="quote-panel">
+        <blockquote>
+          QORTEX let us ship a Konbini-and-LINE checkout in eight weeks. <em>Eight.</em>
+        </blockquote>
+        <div class="quote-panel__by">
+          <div>
+            <div class="quote-panel__name">Customer Name</div>
+            <div class="quote-panel__role">Head of E-commerce, Acme Co</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- block: cta band -->
+  <section class="cta-band" id="cta">
+    <div class="container">
+      <h2 class="h2">Want a conversation like this one?</h2>
+      <p class="sub" style="margin: 0 auto 24px;">Book 30 minutes with our team. We'll talk through your specific Japan-commerce architecture, what your phase one would look like, and how the first 90 days might break down.</p>
+      <a href="https://qortex.com" class="btn btn-cyan">Book a personalised demo →</a>
+    </div>
+  </section>
+
+</body>
+</html>
