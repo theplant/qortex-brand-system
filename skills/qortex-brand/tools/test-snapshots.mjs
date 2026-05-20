@@ -140,6 +140,8 @@ const cases = [
   // Slides — first slide of each deck, exported by slidev export PNG.
   slideCase("sales-pitch", "en"),
   slideCase("sales-pitch", "ja"),
+  slideCase("executive-briefing", "en"),
+  slideCase("executive-briefing", "ja"),
 ];
 
 function loadPng(path) {
